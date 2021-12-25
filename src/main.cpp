@@ -76,6 +76,7 @@ long previousTime = 0;
 void loop() {
   delay(1);
   if((millis() - previousTime) > SAMPLE_PERIOD){
+    M5.update();
     previousTime = millis();
     if(bleKeyboard.isConnected()){  
       delay(20);
@@ -114,10 +115,6 @@ void loop() {
         Serial.println("BtnB was released");
         eventClear();
       }
-
-
-
-      M5.update();
     } 
     i++;
     if(i == (SAMPLE_SIZE-1)) i=0;

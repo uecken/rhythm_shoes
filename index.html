@@ -23,7 +23,7 @@
             </div>
         </div>
         <p>リズムに合わせて、スマホを振ったり、画面をタップしてリズムゲームをしよう♪</p>
-        <p>Date 2021/12/26 0:44</p>
+        <p>Date 2021/12/26 1:26</p>
         <div id="ac">
           acc
        </div>
@@ -95,7 +95,7 @@ self.onSongleAPIReady =
            var event_time = Date.now();
            console.log(event_time);
            delta_t = beat_time - event_time;
-           delta_t_prev = delta_t + beat_interval
+           delta_t_prev = delta_t + beat_interval;
            console.log(delta_t);
            console.log(delta_t_prev);
            if(Math.abs(delta_t < 100) || Math.abs(delta_t_prev) < 100){
