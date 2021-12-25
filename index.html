@@ -81,26 +81,29 @@ self.onSongleAPIReady =
   var bad_cnt =0;
   var audio_good = new Audio ('sound/button_25.mp3');
   var audio_bad = new Audio ('sound/button_34.mp3');
-
-
+  judge_obj = document.getElementById("judge");
+  good_result_obj = document.getElementById("good_result");
+  bad_result_obj = document.getElementById("bad_result");
   function eventAction(){
            var event_time = Date.now();
            console.log(event_time);
            delta_t = Math.abs(beat_time - event_time);
-           if(delta_t < 100 || (delta_t + beat_interval) < 100){
-
-             document.getElementById("judge").innerHTML = "Good♪";
+           delta_t_prev = delta_t + beat_interval
+           console.log(delta_t);
+           console.log(delta_t_prev);
+           if(delta_t < 100 || (delta_t_prev) < 100){
+             judge_obj.innerHTML = "Good♪";
              console.log("Gooooood");
              good_cnt++;
-             document.getElementById("good_result").innerHTML = good_cnt;
+             good_result_obj.innerHTML = good_cnt;
              //audio.pause();
              audio_good.currentTime = 0;
              audio_good.play();
 }else{
-             document.getElementById("judge").innerHTML = "bad...";
+             judge_obj.innerHTML = "bad...";
 　					 //console.log("bad");
              bad_cnt++;
-             document.getElementById("bad_result").innerHTML = bad_cnt;
+             bad_result_obj.innerHTML = bad_cnt;
              audio_bad.currentTime = 0;
              audio_bad.play();
            }
