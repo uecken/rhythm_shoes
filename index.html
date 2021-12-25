@@ -80,7 +80,6 @@ self.onSongleAPIReady =
     });
 
     document.body.addEventListener('click', function(){
-        if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
         	 var event_time = Date.now();
            console.log(event_time);
            delta_t = beat_time - event_time;
@@ -94,9 +93,7 @@ self.onSongleAPIReady =
 　						console.log("bad");
              bad_cnt++;
              document.getElementById("bad_result").innerHTML = bad_cnt;
-             ;
            }
-        }
     });
   </script>
   
