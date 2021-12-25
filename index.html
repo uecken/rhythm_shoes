@@ -99,16 +99,21 @@ self.onSongleAPIReady =
       eventAction();
     });*/
 
+    var previousAccTime
     window.addEventListener( "devicemotion", function( event ){
-      var x = event.accelerationIncludingGravity.x;
-      var y = event.accelerationIncludingGravity.y;
-      var z = event.accelerationIncludingGravity.z;
-      ac = Math.sqrt(x*x + y*y + z*z);
-      console.log(ac);
-      document.getElementById("ac").innerHTML = ac;
-      if(Math.sqrt(ac) > 5){
+      var now = Date.now();
+      if (now - previousAccTime < 50){
+        previousACCTime = now;
+        var x = event.accelerationIncludingGravity.x;
+        var y = event.accelerationIncludingGravity.y;
+        var z = event.accelerationIncludingGravity.z;
+        ac = Math.sqrt(x*x + y*y + z*z);
+        console.log(ac);
         document.getElementById("ac").innerHTML = ac;
-        eventAction();
+        if(Math.sqrt(ac) > 5){
+          document.getElementById("ac").innerHTML = ac;
+          eventAction();
+        }
       }
     });
   </script>
