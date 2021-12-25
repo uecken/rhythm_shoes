@@ -100,7 +100,7 @@ self.onSongleAPIReady =
       eventAction();
     });*/
 
-    var previousAccTime
+    var previousAccTime =0;
     window.addEventListener( "devicemotion", function( event ){
       var now = Date.now();
       if (now - previousAccTime < 50){
