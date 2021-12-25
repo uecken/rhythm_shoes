@@ -40,6 +40,7 @@
   <script>
 var beat_time = 0;
 var beat_interval = 422;
+var beat_offset = -150;
 
 self.onSongleAPIReady =
   function(Songle) {
@@ -48,7 +49,7 @@ self.onSongleAPIReady =
         mediaElement: "#songle"
       });
 
-  　player.addPlugin(new Songle.Plugin.Beat({offset: -150}));      
+  　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));      
     player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");
     
@@ -84,12 +85,12 @@ self.onSongleAPIReady =
 
   function eventAction(){
            var event_time = Date.now();
-           //console.log(event_time);
+           console.log(event_time);
            delta_t = Math.abs(beat_time - event_time);
            if(delta_t < 100 || (delta_t + beat_interval) < 100){
 
              document.getElementById("judge").innerHTML = "Good♪";
-             //console.log("Gooooood");
+             console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
              //audio.pause();
