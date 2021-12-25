@@ -121,7 +121,8 @@ self.onSongleAPIReady =
       ac = x*x + y*y + z*z;
       console.log(ac);
       //document.getElementById("ac").innerHTML = ac;
-      if(Math.sqrt(ac) > 300){
+      if(Math.sqrt(ac) > 200){
+        document.getElementById("ac").innerHTML = ac;
         eventAction();
       }
     });
