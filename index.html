@@ -78,14 +78,13 @@ self.onSongleAPIReady =
            //console.log(event_time);
            delta_t = Math.abs(beat_time - event_time);
            if(delta_t < 100 || (delta_t + beat_interval) < 100){
-             audio.pause();
-             audio.currentTime = 0;
-             audio.play();
+             //audio.pause();
              document.getElementById("judge").innerHTML = "Good♪";
              //console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
-
+             audio.currentTime = 0;
+             audio.play();
 }else{
              document.getElementById("judge").innerHTML = "bad...";
 　					 //console.log("bad");
