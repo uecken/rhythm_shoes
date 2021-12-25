@@ -24,8 +24,12 @@
           acc
        </div>
         <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
-        <script src="https://api.songle.jp/v2/api.js"></script>       
-    </body>
+        <script src="https://api.songle.jp/v2/api.js"></script>
+
+        <audio data-key=25 src = "music/button_25.mp3"></audio>
+        <audio data-key=34 src = "music/button_34.mp3"></audio>
+        <audio data-key=41 src = "music/button_41.mp3"></audio>
+      </body>
 </html>
 
   <script src="https://api.songle.jp/v2/api.js"></script>
@@ -99,6 +103,7 @@ self.onSongleAPIReady =
 
     document.body.addEventListener('click', function(){
       eventAction();
+      soundOutput();
     });
 
     
@@ -122,4 +127,10 @@ self.onSongleAPIReady =
         }
       }
     });
+
+
+    function soundOutput(){
+      document.querySelector(`.key[data-key=25]`).classList.add('playing');
+      document.querySelector(`audio[data-key=25]`).play();
+    }
   </script>
