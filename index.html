@@ -20,15 +20,12 @@
             </div>
         </div>
         <p>リズムに合わせて、スマホを振ったり、画面をタップしてリズムゲームをしよう♪</p>
+        <p>Date 2021/12/26 0:34</p>
         <div id="ac">
           acc
        </div>
         <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>
-
-        <audio data-key=25 src = "music/button_25.mp3"></audio>
-        <audio data-key=34 src = "music/button_34.mp3"></audio>
-        <audio data-key=41 src = "music/button_41.mp3"></audio>
       </body>
 </html>
 
@@ -110,11 +107,14 @@ self.onSongleAPIReady =
       eventAction();
     });
 
-    
+
+    //===========Smartphone Event Listener============    
     /*document.body.addEventListener('touchstart', function(){
       eventAction();
     });*/
 
+    //===========ACC Event Listener============
+    /*
     var previousAccTime =0;
     window.addEventListener( "devicemotion", function( event ){
       var now = Date.now();
@@ -131,6 +131,7 @@ self.onSongleAPIReady =
         }
       }
     });
+    */
 
 
 
