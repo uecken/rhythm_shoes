@@ -14,14 +14,15 @@
         <div id="bad_result">
         bad_result
         </div>
-        <div id="ac">
-          acc
-      </div>
+
         <div class="media">
             <div id="songle">
             </div>
         </div>
         <p>リズムに合わせて、スマホを振ったり、画面をタップしてリズムゲームをしよう♪</p>
+        <div id="ac">
+          acc
+       </div>
         <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>       
     </body>
@@ -114,7 +115,7 @@ self.onSongleAPIReady =
         var z = event.accelerationIncludingGravity.z;
         ac = Math.round(Math.sqrt(x*x + y*y + z*z));
         console.log(ac);
-        if(Math.sqrt(ac) >= 5){
+        if(ac >= 20){
           document.getElementById("ac").innerHTML = "acc:"+String(ac);
           eventAction();
         }
