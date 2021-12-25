@@ -76,19 +76,20 @@ self.onSongleAPIReady =
 
   function eventAction(){
            var event_time = Date.now();
-           console.log(event_time);
-           delta_t = beat_time - event_time;
-           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
-             document.getElementById("judge").innerHTML = "Good♪";
-             console.log("Gooooood");
-             good_cnt++;
-             document.getElementById("good_result").innerHTML = good_cnt;
+           //console.log(event_time);
+           delta_t = Math.abs(beat_time - event_time);
+           if(delta_t < 100 || (delta_t + beat_interval) < 100){
              audio.pause();
              audio.currentTime = 0;
              audio.play();
+             document.getElementById("judge").innerHTML = "Good♪";
+             //console.log("Gooooood");
+             good_cnt++;
+             document.getElementById("good_result").innerHTML = good_cnt;
+
 }else{
              document.getElementById("judge").innerHTML = "bad...";
-　						console.log("bad");
+　					 //console.log("bad");
              bad_cnt++;
              document.getElementById("bad_result").innerHTML = bad_cnt;
            }
@@ -133,11 +134,4 @@ self.onSongleAPIReady =
     });
     */
 
-
-
-/*    function soundOutput(){
-      document.querySelector(`.key[data-key=25]`).classList.add('playing');
-      document.querySelector(`audio[data-key=25]`).play();
-    }
-*/
   </script>
