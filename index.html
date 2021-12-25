@@ -5,6 +5,9 @@
   </head>
     <p>Rhythm!</p>
     <body>
+        <div id="beat">
+          beat
+        </div>
         <div id="judge">
             jundge
         </div>
@@ -59,18 +62,22 @@ self.onSongleAPIReady =
         switch(ev.data.beat.position) {
           case 1:
             console.log("1st beat !!");
+            beat_obj.innerHTML = "1";            
             break;
 
           case 2:
             console.log("2nd beat !!");
+            beat_obj.innerHTML = "2";            
             break;
 
           case 3:
             console.log("3rd beat !!")
+            beat_obj.innerHTML = "3";            
             break;
 
           case 4:
             console.log("4th beat !!");
+            beat_obj.innerHTML = "4"; 
             break;
         }
       });
@@ -84,6 +91,7 @@ self.onSongleAPIReady =
   judge_obj = document.getElementById("judge");
   good_result_obj = document.getElementById("good_result");
   bad_result_obj = document.getElementById("bad_result");
+  beat_obj = document.getElementById("beat");
   function eventAction(){
            var event_time = Date.now();
            console.log(event_time);
