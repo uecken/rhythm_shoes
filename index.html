@@ -112,10 +112,10 @@ self.onSongleAPIReady =
         var x = event.accelerationIncludingGravity.x;
         var y = event.accelerationIncludingGravity.y;
         var z = event.accelerationIncludingGravity.z;
-        ac = Math.sqrt(x*x + y*y + z*z);
+        ac = Math.round(Math.sqrt(x*x + y*y + z*z));
         console.log(ac);
         document.getElementById("ac").innerHTML = ac;
-        if(Math.sqrt(ac) > 5){
+        if(Math.sqrt(ac) >= 5){
           document.getElementById("ac").innerHTML = ac;
           eventAction();
         }
