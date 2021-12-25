@@ -20,6 +20,7 @@
   <script src="https://api.songle.jp/v2/api.js"></script>
   <script>
 var beat_time = 0;
+var beat_interval = 422;
 
 self.onSongleAPIReady =
   function(Songle) {
@@ -28,7 +29,7 @@ self.onSongleAPIReady =
         mediaElement: "#songle"
       });
 
-    player.addPlugin(new Songle.Plugin.Beat());
+  　player.addPlugin(new Songle.Plugin.Beat({offset: -50}));      
     player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
 
     player.on("beatPlay",
@@ -62,8 +63,8 @@ self.onSongleAPIReady =
         if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
         	 var event_time = Date.now();
            console.log(event_time);
-           
-           if(Math.abs(beat_time - event_time) < 100){
+           delta_t = beat_time - event_time;
+           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + event_time) < 100){
              document.getElementById("judge").innerHTML = "Good♪"
              console.log("Gooooood");
              good_cnt++;
