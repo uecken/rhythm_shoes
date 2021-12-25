@@ -20,7 +20,7 @@
             </div>
         </div>
         <p>リズムに合わせて、スマホを振ったり、画面をタップしてリズムゲームをしよう♪</p>
-        <p>Date 2021/12/26 0:41</p>
+        <p>Date 2021/12/26 0:44</p>
         <div id="ac">
           acc
        </div>
@@ -71,25 +71,30 @@ self.onSongleAPIReady =
   
   var good_cnt=0;
   var bad_cnt =0;
-  var audio = new Audio ('sound/button_25.mp3');
+  var audio_good = new Audio ('sound/button_25.mp3');
+  var audio_bad = new Audio ('sound/button_34.mp3');
+
 
   function eventAction(){
            var event_time = Date.now();
            //console.log(event_time);
            delta_t = Math.abs(beat_time - event_time);
            if(delta_t < 100 || (delta_t + beat_interval) < 100){
-             //audio.pause();
+
              document.getElementById("judge").innerHTML = "Good♪";
              //console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
-             audio.currentTime = 0;
-             audio.play();
+             //audio.pause();
+             audio_good.currentTime = 0;
+             audio_good.play();
 }else{
              document.getElementById("judge").innerHTML = "bad...";
 　					 //console.log("bad");
              bad_cnt++;
              document.getElementById("bad_result").innerHTML = bad_cnt;
+             audio_bad.currentTime = 0;
+             audio_bad.play();
            }
     return null;
   }
