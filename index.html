@@ -87,11 +87,11 @@ self.onSongleAPIReady =
   function eventAction(){
            var event_time = Date.now();
            console.log(event_time);
-           delta_t = Math.abs(beat_time - event_time);
+           delta_t = beat_time - event_time;
            delta_t_prev = delta_t + beat_interval
            console.log(delta_t);
            console.log(delta_t_prev);
-           if(delta_t < 100 || (delta_t_prev) < 100){
+           if(Math.abs(delta_t < 100) || Math.abs(delta_t_prev) < 100){
              judge_obj.innerHTML = "Good♪";
              console.log("Gooooood");
              good_cnt++;
