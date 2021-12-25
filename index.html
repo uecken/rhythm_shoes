@@ -79,8 +79,7 @@ self.onSongleAPIReady =
         }
     });
 
-    document.body.addEventListener('click',
-    event => {
+    document.body.addEventListener('click', function(){
         if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
         	 var event_time = Date.now();
            console.log(event_time);
