@@ -1,0 +1,82 @@
+<html>
+    <body>
+        <div id="judge">
+            jundge
+        </div>
+        <div id="good_result">
+        good_result
+        </div>
+        <div id="bad_result">
+        bad_result
+        </div>
+        <div class="media">
+            <div id="songle">
+            </div>
+        </div>
+        <script src="https://api.songle.jp/v2/api.js"></script>       
+    </body>
+</html>
+
+  <script src="https://api.songle.jp/v2/api.js"></script>
+  <script>
+var beat_time = 0;
+
+self.onSongleAPIReady =
+  function(Songle) {
+    var player =
+      new Songle.Player({
+        mediaElement: "#songle"
+      });
+
+    player.addPlugin(new Songle.Plugin.Beat());
+    player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
+
+    player.on("beatPlay",
+      function(ev) {
+        beat_time = Date.now();
+        switch(ev.data.beat.position) {
+          case 1:
+            console.log("1st beat !!");
+            break;
+
+          case 2:
+            console.log("2nd beat !!");
+            break;
+
+          case 3:
+            console.log("3rd beat !!")
+            break;
+
+          case 4:
+            console.log("4th beat !!");
+            break;
+        }
+      });
+  }
+  
+  
+  var good_cnt=0;
+  var bad_cnt =0;
+  document.body.addEventListener('keydown',
+    event => {
+        if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
+        	 var event_time = Date.now();
+           console.log(event_time);
+           
+           if(Math.abs(beat_time - event_time) < 100){
+             document.getElementById("judge").innerHTML = "Good ♪"
+             console.log("Gooooood");
+             good_cnt++;
+             document.getElementById("good_result").innerHTML = good_cnt;
+}else{
+             document.getElementById("judge").innerHTML = "bad ♪"
+　						console.log("bad");
+             bad_cnt++;
+             document.getElementById("bad_result").innerHTML = bad_cnt;
+             ;
+           }
+        }
+    });
+  </script>
+  
+
