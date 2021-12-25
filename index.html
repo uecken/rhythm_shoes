@@ -86,6 +86,8 @@ self.onSongleAPIReady =
              console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
+             audio.pause();
+             audio.currentTime = 0;
              audio.play();
 }else{
              document.getElementById("judge").innerHTML = "bad...";
@@ -93,7 +95,8 @@ self.onSongleAPIReady =
              bad_cnt++;
              document.getElementById("bad_result").innerHTML = bad_cnt;
            }
-     return null;
+    audio.stop();  
+    return null;
   }
 
   document.body.addEventListener('keydown',
