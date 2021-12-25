@@ -64,12 +64,12 @@ self.onSongleAPIReady =
            console.log(event_time);
            
            if(Math.abs(beat_time - event_time) < 100){
-             document.getElementById("judge").innerHTML = "Good ♪"
+             document.getElementById("judge").innerHTML = "Good♪"
              console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
 }else{
-             document.getElementById("judge").innerHTML = "bad ♪"
+             document.getElementById("judge").innerHTML = "bad..."
 　						console.log("bad");
              bad_cnt++;
              document.getElementById("bad_result").innerHTML = bad_cnt;
