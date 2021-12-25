@@ -107,7 +107,7 @@ self.onSongleAPIReady =
     var previousAccTime =0;
     window.addEventListener( "devicemotion", function( event ){
       var now = Date.now();
-      if (now - previousAccTime > 50){
+      if (now - previousAccTime > 200){
         previousACCTime = now;
         var x = event.accelerationIncludingGravity.x;
         var y = event.accelerationIncludingGravity.y;
