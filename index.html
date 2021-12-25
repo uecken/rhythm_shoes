@@ -115,8 +115,9 @@ self.onSongleAPIReady =
       var x = event.accelerationIncludingGravity.x;
       var y = event.accelerationIncludingGravity.y;
       var z = event.accelerationIncludingGravity.z;
-      
-      if(Math.sqrt(x*x + y*y + z*z) > 3){
+      ac = x*x + y*y + z*z;
+      console.log(ac);
+      if(Math.sqrt(ac) > 3000){
         eventAction();
       }
     });
