@@ -44,6 +44,7 @@
 var beat_time = 0;
 var beat_interval = 422;
 var beat_offset = -150;
+beat_obj = document.getElementById("beat");
 
 self.onSongleAPIReady =
   function(Songle) {
@@ -91,7 +92,6 @@ self.onSongleAPIReady =
   judge_obj = document.getElementById("judge");
   good_result_obj = document.getElementById("good_result");
   bad_result_obj = document.getElementById("bad_result");
-  beat_obj = document.getElementById("beat");
   function eventAction(){
            var event_time = Date.now();
            console.log(event_time);
