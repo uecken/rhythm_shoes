@@ -13,6 +13,7 @@
             <div id="songle">
             </div>
         </div>
+        <button onclick="eventAction()"> Smartphone-tap </button>
         <script src="https://api.songle.jp/v2/api.js"></script>       
     </body>
 </html>
@@ -58,6 +59,24 @@ self.onSongleAPIReady =
   
   var good_cnt=0;
   var bad_cnt =0;
+
+  function eventAction(){
+    console.log(event_time);
+           delta_t = beat_time - event_time;
+           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
+             document.getElementById("judge").innerHTML = "Good♪"
+             console.log("Gooooood");
+             good_cnt++;
+             document.getElementById("good_result").innerHTML = good_cnt;
+}else{
+             document.getElementById("judge").innerHTML = "bad..."
+　						console.log("bad");
+             bad_cnt++;
+             document.getElementById("bad_result").innerHTML = bad_cnt;
+             ;
+           }
+  }
+
 
   document.body.addEventListener('keydown',
     event => {
