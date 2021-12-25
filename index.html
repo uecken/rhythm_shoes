@@ -77,63 +77,47 @@ self.onSongleAPIReady =
            }
   }
 
+  function eventAction(){
+           var event_time = Date.now();
+           console.log(event_time);
+           delta_t = beat_time - event_time;
+           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
+             document.getElementById("judge").innerHTML = "Good♪"
+             console.log("Gooooood");
+             good_cnt++;
+             document.getElementById("good_result").innerHTML = good_cnt;
+}else{
+             document.getElementById("judge").innerHTML = "bad..."
+　						console.log("bad");
+             bad_cnt++;
+             document.getElementById("bad_result").innerHTML = bad_cnt;
+           }
+     return null;
+  }
 
   document.body.addEventListener('keydown',
     event => {
         if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
-        	 var event_time = Date.now();
-           console.log(event_time);
-           delta_t = beat_time - event_time;
-           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
-             document.getElementById("judge").innerHTML = "Good♪"
-             console.log("Gooooood");
-             good_cnt++;
-             document.getElementById("good_result").innerHTML = good_cnt;
-}else{
-             document.getElementById("judge").innerHTML = "bad..."
-　						console.log("bad");
-             bad_cnt++;
-             document.getElementById("bad_result").innerHTML = bad_cnt;
-             ;
-           }
+          eventAction();
         }
     });
 
     document.body.addEventListener('click', function(){
-        	 var event_time = Date.now();
-           console.log(event_time);
-           delta_t = beat_time - event_time;
-           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
-             document.getElementById("judge").innerHTML = "Good♪"
-             console.log("Gooooood");
-             good_cnt++;
-             document.getElementById("good_result").innerHTML = good_cnt;
-}else{
-             document.getElementById("judge").innerHTML = "bad..."
-　						console.log("bad");
-             bad_cnt++;
-             document.getElementById("bad_result").innerHTML = bad_cnt;
-           }
+      eventAction();
     });
 
     
     document.body.addEventListener('touchstart', function(){
-        	 var event_time = Date.now();
-           console.log(event_time);
-           delta_t = beat_time - event_time;
-           if(Math.abs(delta_t) < 100 || Math.abs(delta_t + beat_interval) < 100){
-             document.getElementById("judge").innerHTML = "Good♪"
-             console.log("Gooooood");
-             good_cnt++;
-             document.getElementById("good_result").innerHTML = good_cnt;
-}else{
-             document.getElementById("judge").innerHTML = "bad..."
-　						console.log("bad");
-             bad_cnt++;
-             document.getElementById("bad_result").innerHTML = bad_cnt;
-           }
+      eventAction();
     });
 
+    window.addEventListener( "devicemotion", function( event ){
+      var x = event.accelerationIncludingGravity.x;
+      var y = event.accelerationIncludingGravity.y;
+      var z = event.accelerationIncludingGravity.z;
+      
+      if(Math.sqrt(x*x + y*y + z*z) > 3){
+        eventAction();
+      }
+    });
   </script>
-  
-
