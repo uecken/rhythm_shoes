@@ -74,6 +74,7 @@ self.onSongleAPIReady =
   
   var good_cnt=0;
   var bad_cnt =0;
+  var audio = new Audio'sound/button_25.mp3';
 
 
   function eventAction(){
@@ -85,6 +86,7 @@ self.onSongleAPIReady =
              console.log("Gooooood");
              good_cnt++;
              document.getElementById("good_result").innerHTML = good_cnt;
+             audio.play();
 }else{
              document.getElementById("judge").innerHTML = "bad...";
 　						console.log("bad");
@@ -103,7 +105,6 @@ self.onSongleAPIReady =
 
     document.body.addEventListener('click', function(){
       eventAction();
-      soundOutput();
     });
 
     
@@ -129,8 +130,10 @@ self.onSongleAPIReady =
     });
 
 
-    function soundOutput(){
+
+/*    function soundOutput(){
       document.querySelector(`.key[data-key=25]`).classList.add('playing');
       document.querySelector(`audio[data-key=25]`).play();
     }
+*/
   </script>
