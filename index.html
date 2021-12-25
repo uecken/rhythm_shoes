@@ -98,7 +98,7 @@ self.onSongleAPIReady =
            delta_t_prev = delta_t + beat_interval;
            console.log(delta_t);
            console.log(delta_t_prev);
-           if(Math.abs(delta_t < 100) || Math.abs(delta_t_prev) < 100){
+           if(Math.abs(delta_t) < 100|| Math.abs(delta_t_prev) < 100){
              judge_obj.innerHTML = "Good♪";
              console.log("Gooooood");
              good_cnt++;
@@ -106,7 +106,7 @@ self.onSongleAPIReady =
              //audio.pause();
              audio_good.currentTime = 0;
              audio_good.play();
-}else{
+          }else{
              judge_obj.innerHTML = "bad...";
 　					 //console.log("bad");
              bad_cnt++;
