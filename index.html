@@ -310,7 +310,7 @@ function get_beat_interval(url){
   var beat_interval_ave;
   request.open('GET',URL,true);
   request.onload = function(){
-    var beats = JSON.parse(this.response();
+    var beats = JSON.parse(this.response());
     console.log(beats);
     beat_interval_ave = calc_ave(beats['bpm'])/60.0;
     console.log(calc_ave(beats['bpm']));
