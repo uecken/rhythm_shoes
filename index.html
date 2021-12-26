@@ -190,8 +190,7 @@ self.onSongleAPIReady =
     //player.useMedia("https://youtu.be/PqJNc9KVIZE");//Tell Your World
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");// 千本桜
-    beat_interval = get_beat_interval(target_music['URL']);
-    console.log("beat_interval");
+    set_beat_interval(target_music['URL']);
 
     player.on("beatPlay",
       function(ev) {
