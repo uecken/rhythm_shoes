@@ -107,7 +107,7 @@
          <li class="list-group-item">スマホで加速度イベントリスナを使う場合はレートを落とさないと他処理が遅くなるため今は使わない</li>
          <li class="list-group-item">マウスクリックやタップは離した際にイベント検出される</li>
          <li class="list-group-item">Timingは最も近い節(beat)との差を算出している。</li>
-         <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する(未実装)。曲ごとに適切なBeat Offsetが異なる事も判明。機種依存がどれ程あるかは要検証。</li>
+         <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する(未実装)。曲ごとに適切なBeat Offsetが異なる可能性がある。機種依存がどれ程あるかは要検証。まず初めにbeat_intervalを算出する事</li>
         </ul>
       </div>
       <br>
@@ -134,7 +134,8 @@ self.onSongleAPIReady =
         mediaElement: "#songle"
       });
 
-    //★楽曲ごとにbeat_offsetも指定する
+    //★楽曲ごとにbeat_offsetも指定する.
+    //その前に、beat_intervalを算出する事
     Music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
     Music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0};
     Music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
@@ -149,11 +150,11 @@ self.onSongleAPIReady =
     }));*/
     player.addPlugin(new Songle.Plugin.Chorus()); //SW通常埋め込み
     player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw", beatEventPriority: 4}));　//SW通常埋め込み　
-    //player.useMedia("https://www.nicovideo.jp/watch/sm17570087"); 
+    player.useMedia("https://nico.ms/sm17570087"); //千本桜 beat422
     //player.useMedia("https://www.youtube.com/watch?v=GivkxpAVVC4"); //ファッションモンスター
     //player.useMedia("https://youtu.be/PqJNc9KVIZE");//Tell Your World
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
-    player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");// 千本桜
+    //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");// 千本桜
 
     player.on("beatPlay",
       function(ev) {
