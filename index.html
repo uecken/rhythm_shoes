@@ -235,9 +235,9 @@ self.onSongleAPIReady =
 
            //=====判定誤差表示====
            if(Math.abs(delta_t) < Math.abs(delta_t_prev)){
-            timing_diff_obj.innerHTML = delta_t;
+            timing_diff_obj.innerHTML = delta_t+"ms";
            }else{
-            timing_diff_obj.innerHTML = delta_t_prev; 
+            timing_diff_obj.innerHTML = delta_t_prev+"ms"; 
            }
     return null;
   }
