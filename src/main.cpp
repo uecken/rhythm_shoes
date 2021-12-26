@@ -67,6 +67,7 @@ void eventAction(String actionType="print",String key="e"){
 
 void eventClear(){
   bleKeyboard.releaseAll();
+  
 }
 
 boolean BtnAisPressed;
