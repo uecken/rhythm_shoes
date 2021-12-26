@@ -17,10 +17,10 @@
         <div id="acc">acc</div>
         <div id="beat_offset">beat_offset</div>
         <div id="rhythm_judge_range">rhythm judgea range</div>
-          <button type="button" value="beat_offset+" onclick="beat_offset(10)" id="beat_offset+"> beat offset+ </button>
-          <button type="button" value="beat_offset-" onclick="beat_offset(-10)" id="beat_offset-"> beat offset- </button>
-          <button type="button" value="rhythm_range+" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
-          <button type="button" value="rhythm_range-" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
+        <button type="button" value="beat_offset+" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
+        <button type="button" value="beat_offset-" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
+        <button type="button" value="rhythm_range+" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
+        <button type="button" value="rhythm_range-" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
        <div>
         注意事項：<br>
          ・スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない<br>
@@ -40,7 +40,6 @@
 var beat_time = 0;
 var beat_interval = 422;
 var beat_offset = -150;
-
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
@@ -130,7 +129,7 @@ self.onSongleAPIReady =
       eventAction(rhythm_judge_range);
     });
 
-  function beat_offset(offset){
+  function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset;
   }
