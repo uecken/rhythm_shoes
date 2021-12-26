@@ -152,8 +152,6 @@ self.onSongleAPIReady =
     player.on("beatPlay",
       function(ev) {
         beat_time = Date.now();
-
-        /*
         switch(ev.data.beat.position) {
           case 1:
             console.log("1st beat !!");
@@ -174,7 +172,7 @@ self.onSongleAPIReady =
             console.log("4th beat !!");
             beat_obj.innerHTML = "4"; 
             break;
-        }*/
+        }
       });
       global_player = player;
   }
@@ -209,7 +207,7 @@ self.onSongleAPIReady =
              //audio.pause();
              if(continuous_good_cnt==10){
               judge_obj.innerHTML = "10 combo♪";
-            }else if(continuous_good_cnt==30){
+             }else if(continuous_good_cnt==30){
               judge_obj.innerHTML = "30 combo♪♪♪";
              }else{
               judge_obj.innerHTML = "Good♪";
