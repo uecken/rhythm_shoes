@@ -126,6 +126,11 @@ beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
 var global_player;
 
+window.onload = function(){
+  beat_offset_obj.innerHTML = String(beat_offset) + "ms";
+}
+
+
 //======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
