@@ -54,7 +54,7 @@
               0
             </span>
           </button>
-          <span id="judge">jundge</span>
+          <span id="judge"></span>
         </div>
 
 
@@ -68,15 +68,15 @@
           <span >beat_offset(未実装):</span>
           <span id="beat_offset">0</span>
           <br>
-          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
-          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
+          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> + </button>
+          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> - </button>
         </div>
         <div>
           <span >Rhythm range:</span>
           <span id="rhythm_judge_range">±100</span>
           <br>
-          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
-          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
+          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">+</button>
+          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">-</button>
         <div>
       </div>
       <br>
@@ -112,7 +112,8 @@
          <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整するが未実装。(実装する際はonSongleAPIReadyを使わない事) </li>
         </ul>
       </div>
-      <div id="acc">acc</div><br>
+      <br>
+      <div id="acc">加速度イベント(OFF)</div><br>
        <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>
       </body>
