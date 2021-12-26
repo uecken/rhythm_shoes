@@ -108,6 +108,7 @@ var beat_offset = -150;
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
+var player;
 
 //======beat offsetするには、playerインスタンスを外で生成する必要がある==========
 self.onSongleAPIReady =
@@ -118,10 +119,11 @@ self.onSongleAPIReady =
       });
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+    player.volume = 100;
     player.useMedia("https://youtu.be/PqJNc9KVIZE");
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");
-    player.volume = 20;
+
     player.on("beatPlay",
       function(ev) {
         beat_time = Date.now();
@@ -147,6 +149,7 @@ self.onSongleAPIReady =
             break;
         }
       });
+      player = player;
   }
   
   
@@ -237,8 +240,7 @@ self.onSongleAPIReady =
   }, false);
 
 function sound_onoff(aa){
-  songleW 
-
+  player.volume = 0;
 }
 
 /*
