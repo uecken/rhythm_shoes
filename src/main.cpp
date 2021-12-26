@@ -80,7 +80,6 @@ void loop() {
     M5.update();
     previousTime = millis();
     if(bleKeyboard.isConnected()){  
-      delay(20);
       if(eventDetector("accz_sensor")){
         eventAction("print");
         //複数回eventが実行されてしまう。
