@@ -132,7 +132,7 @@ window.onload = function(){
 
 function get_beat_interval(url){
   var request = new XMLHttpRequest();
-  var URL = "https://widget.songle.jp/api/v1/song/chord.json?url="+url;
+  var URL = "https://widget.songle.jp/api/v1/song/beat.json?url="+url;
   var beat_interval_ave;
   request.open('GET',URL,true);
   request.onload = function(){
