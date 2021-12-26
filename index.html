@@ -93,7 +93,7 @@ self.onSongleAPIReady =
   good_result_obj = document.getElementById("good_result");
   bad_result_obj = document.getElementById("bad_result");
   var rhythm_judge_range = 100;
-  function eventAction(){
+  function eventAction(rhythm_judge_range){
            var event_time = Date.now();
            console.log(event_time);
            delta_t = beat_time - event_time;
@@ -122,12 +122,12 @@ self.onSongleAPIReady =
   document.body.addEventListener('keydown',
     event => {
         if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
-          eventAction();
+          eventAction(rhythm_judge_range);
         }
     });
 
     document.body.addEventListener('click', function(){
-      eventAction();
+      eventAction(rhythm_judge_range);
     });
 
   function beat_offset(offset){
