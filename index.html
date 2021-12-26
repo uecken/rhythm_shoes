@@ -343,7 +343,7 @@ function set_beat_interval(url){
   .then((response)=>{
     beats_json = response['beats'];
     console.log('==========');
-    beat_interval = calc_ave(beats_json,'bpm',20);
+    beat_interval = (60.0/calc_ave(beats_json,'bpm',20))*1000;
     console.log(beat_interval );
   });
 }
