@@ -96,10 +96,10 @@ self.onSongleAPIReady =
   var bad_cnt =0;
   var audio_good = new Audio ('sound/button_25.mp3');
   var audio_bad = new Audio ('sound/button_34.mp3');
-  judge_obj = document.getElementById("judge");
-  timing_diff_obj = document.getElementById("timing_diff");
-  good_result_obj = document.getElementById("good_result");
-  bad_result_obj = document.getElementById("bad_result");
+  var judge_obj = document.getElementById("judge");
+  var timing_diff_obj = document.getElementById("timing_diff");
+  var good_result_obj = document.getElementById("good_result");
+  var bad_result_obj = document.getElementById("bad_result");
   var rhythm_judge_range = 100;
   function eventAction(rhythm_judge_range){
            var event_time = Date.now();
@@ -126,7 +126,7 @@ self.onSongleAPIReady =
            }
 
            //=====判定誤差表示====
-           if(Math.abs(delta_t) < Math.abs(delata_t_prev)){
+           if(Math.abs(delta_t) < Math.abs(delta_t_prev)){
             timing_diff_obj.innerHTML = delta_t;
            }else{
             timing_diff_obj.innerHTML = delata_t_prev; 
