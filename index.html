@@ -15,13 +15,25 @@
 
       <p>リズムに合わせ画面をタップしてリズムゲームをしよう♪</p>
       <div>
-        <span class="badge bg-primary position-relative">
+        <button type="button" class="btn btn-primary position-relative">
+          Beat
+          <span id="beat" class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-secondary">
+            0
+          </span>
+        </button>
+        <button type="button" class="btn btn-primary position-relative">
+          Beat
+          <span id="timing_diff" class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-success">
+            0
+          </span>
+        </button>
+        <!--<span class="badge bg-primary position-relative">
           Beat
           <span id="beat" class="badge bg-secondary">1</span> 
         </span>
         <span class="badge bg-primary">
           Timing <span id="timing_diff" class="badge bg-success position-relative">0</span>
-        </span>
+        </span>-->
         <div id="judge">jundge</div>
         <!--
         <div id="beat">beat</div>
