@@ -182,6 +182,7 @@ self.onSongleAPIReady =
 
   var good_cnt=0;
   var bad_cnt =0;
+  var continuous_good_cnt=0;
   var judge_obj = document.getElementById("judge");
   var timing_diff_obj = document.getElementById("timing_diff");
   var good_result_obj = document.getElementById("good_result");
@@ -201,17 +202,26 @@ self.onSongleAPIReady =
            console.log(delta_t);
            console.log(delta_t_prev);
            if(Math.abs(delta_t) < rhythm_judge_range  || Math.abs(delta_t_prev) < rhythm_judge_range){
-             judge_obj.innerHTML = "Good♪";
              console.log("Gooooood");
              good_cnt++;
-             good_result_obj.innerHTML = good_cnt;
+             continuous_good_cnt++;
+             
              //audio.pause();
-             audio_good.currentTime = 0;
-             audio_good.play();
+             if(continuous_good_cnt==10){
+              judge_obj.innerHTML = "10 combo♪";
+            }else if(continuous_good_cnt==30){
+              judge_obj.innerHTML = "30 combo♪♪♪";
+             }else{
+              judge_obj.innerHTML = "Good♪";
+              good_result_obj.innerHTML = good_cnt;
+              audio_good.currentTime = 0;
+              audio_good.play();
+             }
           }else{
              judge_obj.innerHTML = "bad...";
 　					 //console.log("bad");
              bad_cnt++;
+             continuous_good_cnt = 0;
              bad_result_obj.innerHTML = bad_cnt;
              audio_bad.currentTime = 0;
              audio_bad.play();
