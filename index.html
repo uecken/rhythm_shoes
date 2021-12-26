@@ -119,16 +119,14 @@
 
 <script>
 var beat_time = 0;
-var beat_interval = 422;
+var beat_interval = 0;//422
 var beat_offset = -100;
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
+beat_interval_obj = document.getElementById("beat_interval");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
 var global_player;
 
-window.onload = function(){
-  beat_offset_obj.innerHTML = String(beat_offset) + "ms";
-}
 
 function get_beat_interval(url){
   var request = new XMLHttpRequest();
@@ -152,7 +150,13 @@ function calc_ave(data){
   }
   ave = sum / data.length;
   return ave;
-  }
+}
+
+window.onload = function(){
+  beat_offset_obj.innerHTML = String(beat_offset) + "ms";
+}
+
+
 //======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
@@ -325,6 +329,33 @@ self.onSongleAPIReady =
 
 function sound_onoff(aa){
   global_player.volume = 0;
+}
+
+
+function set_beat_interval(url){
+  var URL = "https://widget.songle.jp/api/v1/song/beat.json?url="+url;
+  var beats_json;
+  fetch(URL)
+  .then((res)=>{
+    console.log(res);
+    return( res.json() );
+  })
+  .then((response)=>{
+    beats_json = response['beats'];
+    console.log('==========');
+    beat_interval = calc_ave(beats_json,'bpm',20);
+    console.log(beat_interval );
+  });
+}
+
+function calc_ave(data,key,margin_i,){
+  var sum = 0; // 平均
+  for(var i = margin_i ; i < (data.length-margin_i); i++){
+    //console.log(data[i][key]);
+    sum = sum + data[i][key];
+  }
+  ave = sum / (data.length - margin_i*2);
+  return ave;
 }
 
 
