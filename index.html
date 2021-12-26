@@ -71,11 +71,13 @@
           <input type="range" id="volume_good" min="0" max="1" step="0.1" value="0.5">
           <span id="vol_good_range">0.5</span>
         </p>
-        <p>Bod：
+        <p>Bdd：
           <input type="range" id="volume_bad" min="0" max="1" step="0.1" value="0.5">
           <span id="vol_bad_range">0.5</span>
         </p>
-
+        <button class="btn btn-success active" onclick="sound_onoff()" data-toggle="button" aria-pressed="true">
+          Good Sound
+        </button>
         <!--<button class="btn btn-success active" onclick="sound_onoff('audio_good')" data-toggle="button" aria-pressed="true">
           Good Sound
         </button>
@@ -213,6 +215,7 @@ self.onSongleAPIReady =
   function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset+"ms";
+    player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
   }
 
   function rhythm_judge_range_offset(offset){
