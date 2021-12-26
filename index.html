@@ -62,8 +62,6 @@
       </div>
       <br>
       <div><h3>各種設定</h3>
-        <div id="acc">acc</div><br>
-
         <div>
           <span >beat_offset(未実装):</span>
           <span id="beat_offset">0</span>
@@ -105,16 +103,14 @@
       <br>
       <div>開発状況
         <ul class="list-group">
-         <li class="list-group-item">更新日:2021/12/26 11:60</li>
-         <li class="list-group-item">スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない</li>
-         <li class="list-group-item">GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける</li>
-         <li class="list-group-item">https://example.github.io/index.html?version=a1b2c3d</li>
-         <li class="list-group-item">開始前やリアルタイムにbeat_offset設定可能か検討する</li>
-         <li class="list-group-item">Timingは最も近い節との差を算出している。</li>
-         <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する。(設定ではonSongleAPIReadyを使わない事) </li>
+         <li class="list-group-item">更新日:2021/12/26 16:21</li>
+         <li class="list-group-item">スマホで加速度イベントリスナを使う場合はレートを落とさないと他処理が遅くなるため今は使わない</li>
+         <li class="list-group-item">マウスクリックやタップは離した際にイベント検出される</li>
+         <li class="list-group-item">Timingは最も近い節(beat)との差を算出している。</li>
+         <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整するが未実装。(実装する際はonSongleAPIReadyを使わない事) </li>
         </ul>
       </div>
-
+      <div id="acc">acc</div><br>
        <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>
       </body>
@@ -169,6 +165,11 @@ self.onSongleAPIReady =
         }
       });
       global_player = player;
+
+      //===SongleWidget===
+      const plugin =
+      new Songle.Plugin.SongleWidget({ element: "#sw" });
+      player.addPlugin(plugin);
   }
   
   
