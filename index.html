@@ -250,7 +250,7 @@ self.onSongleAPIReady =
 
   audio_good.volume = audio_good_volume.value;  // 初期値設定
   audio_bad.volume = audio_bad_volume.value;  // 初期値設定
-  audio_bad.volume = audio_music_volume.value;  // 初期値設定
+  //audio_bad.volume = audio_music_volume.value;  // 初期値設定
   
   // ボリューム変更時
   audio_good_volume.addEventListener("change", function(){
@@ -262,7 +262,7 @@ self.onSongleAPIReady =
     audio_bad_range.textContent = audio_bad_volume.value;
   }, false);
   audio_music_volume.addEventListener("change", function(){
-    audio_music.volume = audio_music_volume.value;
+    global_player.volume = audio_music_volume.value;
     audio_music_range.textContent = audio_music_volume.value;
   }, false);
 
