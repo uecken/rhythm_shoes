@@ -4,16 +4,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   </head>
     <p>Rhythm Shoes</p>
+    <p>リズムに合わせ画面をタップしてリズムゲームをしよう♪</p>
     <body>
+      <div>リズム判定
         <div id="beat">beat</div>
         <div id="judge">jundge</div>
         <div id="good_result">good_result</div>
         <div id="bad_result">bad_result</div>
-        <div class="media">
+      </div>
+      <div class="media">
             <div id="songle"></div>
-        </div>
-        <p>リズムに合わせて、スマホを振ったり、画面をタップしてリズムゲームをしよう♪</p>
-        <p>Date 2021/12/26 11:60</p>
+      </div>
+      <div>各種設定
         <div id="acc">acc</div>
         <div id="beat_offset">beat_offset</div>
         <div id="rhythm_judge_range">rhythm judgea range</div>
@@ -22,15 +24,16 @@
         <br>
         <button type="button" value="rhythm_range+" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
         <button type="button" value="rhythm_range-" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
-       <div>
-        注意事項：<br>
-         ・スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない<br>
-         ・GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける<br>
-         https://example.github.io/index.html?version=a1b2c3d<br>
-        検討事項：<br>
-        ・開始前やリアルタイムにbeat_offset設定可能か検討する<br>
-
-       </div>
+      </div>
+      <div>開発状況
+        <ul>
+         <li>更新日:2021/12/26 11:60</li>
+         <li>スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない</li>
+         <li>GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける</li>
+         <li>https://example.github.io/index.html?version=a1b2c3d</li>
+         <li>開始前やリアルタイムにbeat_offset設定可能か検討する</li>
+        </ul>
+      </div>
 
        <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>
@@ -46,6 +49,7 @@ beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
 
 
+//======beat offsetするには、playerインスタンスを外で生成する必要がある==========
 self.onSongleAPIReady =
   function(Songle) {
     var player =
@@ -133,7 +137,6 @@ self.onSongleAPIReady =
   function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset;
-    player.beatEventTimingOffset = beat_offset;
   }
 
   function rhythm_judge_range_offset(offset){
