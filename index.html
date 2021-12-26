@@ -109,7 +109,6 @@ beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
 
-
 //======beat offsetするには、playerインスタンスを外で生成する必要がある==========
 self.onSongleAPIReady =
   function(Songle) {
@@ -118,10 +117,11 @@ self.onSongleAPIReady =
         mediaElement: "#songle"
       });
 
-  　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));      
-    player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
+  　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+    player.useMedia("https://youtu.be/PqJNc9KVIZE");
+    //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");
-    
+    player.volume = 20;
     player.on("beatPlay",
       function(ev) {
         beat_time = Date.now();
@@ -236,7 +236,10 @@ self.onSongleAPIReady =
     audio_bad_range.textContent = audio_bad_volume.value;
   }, false);
 
+function sound_onoff(aa){
+  songleW 
 
+}
 
 /*
   function sound_onoff(audio_obj){
