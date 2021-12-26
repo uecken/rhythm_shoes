@@ -52,12 +52,16 @@
         
         <div id="rhythm_judge_range">rhythm judge range</div>
         <div>
-          <span id="beat_offset">beat_offset(未実装)</span>
+          <span >beat_offset(未実装)</span>
+          <span id="beat_offset">-100</span>
+          <br>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
         </div>
         <div>
-          <span id="rhythm_judge_range">rhythm range</span>
+          <span >Rhythm range</span>
+          <span id="rhythm_judge_range">100</span>
+          <br>
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
         <div>
@@ -71,6 +75,7 @@
          <li class="list-group-item">GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける</li>
          <li class="list-group-item">https://example.github.io/index.html?version=a1b2c3d</li>
          <li class="list-group-item">開始前やリアルタイムにbeat_offset設定可能か検討する</li>
+         <li class="list-group-item">Timingは最も近い節との差を算出している。</li>
         </ul>
       </div>
 
