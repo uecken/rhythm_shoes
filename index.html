@@ -344,9 +344,9 @@ function set_beat_interval(url){
   .then((response)=>{
     beats_json = response['beats'];
     console.log('==========');
-    beat_interval = (60.0/calc_ave(beats_json,'bpm',20))*1000;
+    beat_interval = Math.round((60.0/calc_ave(beats_json,'bpm',20))*1000);
     console.log(beat_interval);
-    beat_interval_obj.innerHTML = beat_interval;
+    beat_interval_obj.innerHTML = Math.round(beat_interval);
   });
 }
 
