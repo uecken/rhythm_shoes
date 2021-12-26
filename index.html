@@ -110,7 +110,7 @@ var beat_offset = -150;
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
-var player;
+var global_player;
 
 //======beat offsetするには、playerインスタンスを外で生成する必要がある==========
 self.onSongleAPIReady =
@@ -151,7 +151,7 @@ self.onSongleAPIReady =
             break;
         }
       });
-      player = player;
+      player = global_player;
   }
   
   
@@ -243,7 +243,7 @@ self.onSongleAPIReady =
   }, false);
 
 function sound_onoff(aa){
-  player.volume = 0;
+  global_player.volume = 0;
 }
 
 /*
