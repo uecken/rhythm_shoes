@@ -18,8 +18,26 @@
         <div id="beat">beat</div>
         <div id="judge">jundge</div>
         <div id="timing_diff">timing</div>
+        <!--
         <div id="good_result">good_result</div>
         <div id="bad_result">bad_result</div>
+        -->
+        <button type="button" class="btn btn-primary position-relative">
+          Good
+          <span id="good_result" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            0
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+        <button type="button" class="btn btn-primary position-relative">
+          Bad
+          <span id="bad_result" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            0
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+
+
       </div>
       <div class="media">
             <div id="songle"></div>
@@ -37,12 +55,12 @@
 
       <br>
       <div>開発状況
-        <ul>
-         <li>更新日:2021/12/26 11:60</li>
-         <li>スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない</li>
-         <li>GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける</li>
-         <li>https://example.github.io/index.html?version=a1b2c3d</li>
-         <li>開始前やリアルタイムにbeat_offset設定可能か検討する</li>
+        <ul class="list-group">
+         <li class="list-group-item">更新日:2021/12/26 11:60</li>
+         <li class="list-group-item">スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない</li>
+         <li class="list-group-item">GitHub Pagesでファイル更新した際にすぐ反映させるには、末尾に?=version={commitID}を付ける</li>
+         <li class="list-group-item">https://example.github.io/index.html?version=a1b2c3d</li>
+         <li class="list-group-item">開始前やリアルタイムにbeat_offset設定可能か検討する</li>
         </ul>
       </div>
 
