@@ -83,6 +83,10 @@ self.onSongleAPIReady =
       });
   }
   
+  function(apiKey, songleWidget)
+  {
+    songleWidget.beatEventTimingOffset = -100; // -100 [ms]
+  }
   
   var good_cnt=0;
   var bad_cnt =0;
@@ -132,6 +136,7 @@ self.onSongleAPIReady =
   function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset;
+    player.beatEventTimingOffset = beat_offset;
   }
 
   function rhythm_judge_range_offset(offset){
