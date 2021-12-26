@@ -130,7 +130,29 @@ window.onload = function(){
   beat_offset_obj.innerHTML = String(beat_offset) + "ms";
 }
 
+function get_beat_interval(url){
+  var request = new XMLHttpRequest();
+  var URL = "https://widget.songle.jp/api/v1/song/chord.json?url="+url;
+  var beat_interval_ave;
+  request.open('GET',URL,true);
+  request.onload = function(){
+    var beats = JSON.parse(this.response());
+    console.log(beats);
+    beat_interval_ave = calc_ave(beats['bpm'])/60.0;
+    console.log(calc_ave(beats['bpm']));
+    console.log(beat_interval_ave);
+  }
+  return beat_interval_ave;
+}
 
+function calc_ave(data){
+  var sum = 0; // 平均
+  for(var i = 0; i < data.length; i++){
+    sum = sum + data[i];
+  }
+  ave = sum / data.length;
+  return ave;
+  }
 //======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
@@ -305,29 +327,7 @@ function sound_onoff(aa){
   global_player.volume = 0;
 }
 
-function get_beat_interval(url){
-  var request = new XMLHttpRequest();
-  var URL = "https://widget.songle.jp/api/v1/song/chord.json?url="+url;
-  var beat_interval_ave;
-  request.open('GET',URL,true);
-  request.onload = function(){
-    var beats = JSON.parse(this.response());
-    console.log(beats);
-    beat_interval_ave = calc_ave(beats['bpm'])/60.0;
-    console.log(calc_ave(beats['bpm']));
-    console.log(beat_interval_ave);
-  }
-  return beat_interval_ave;
-}
 
-function calc_ave(data){
-  var sum = 0; // 平均
-  for(var i = 0; i < data.length; i++){
-    sum = sum + data[i];
-  }
-  ave = sum / data.length;
-  return ave;
-  }
 
 /*
   function sound_onoff(audio_obj){
