@@ -19,10 +19,8 @@
         <div id="rhythm_judge_range">rhythm judgea range</div>
           <button type="button" value="beat_offset+" onclick="beat_offset(10)" id="beat_offset+">beat_offset+</button>
           <button type="button" value="beat_offset-" onclick="beat_offset(-10)" id="beat_offset-">beat_offset-</button>
-          <br>
           <button type="button" value="rhythm_range+" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
           <button type="button" value="rhythm_range-" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
-       </button>
        <div>
         注意事項：<br>
          ・スマホで加速度eventを使う場合レートを落とさないと他処理が遅くなるため今は使わない<br>
@@ -42,7 +40,7 @@
 var beat_time = 0;
 var beat_interval = 422;
 var beat_offset = -150;
-var rhythm_judge_range = 100;
+
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
@@ -94,6 +92,7 @@ self.onSongleAPIReady =
   judge_obj = document.getElementById("judge");
   good_result_obj = document.getElementById("good_result");
   bad_result_obj = document.getElementById("bad_result");
+  var rhythm_judge_range = 100;
   function eventAction(){
            var event_time = Date.now();
            console.log(event_time);
@@ -101,7 +100,7 @@ self.onSongleAPIReady =
            delta_t_prev = delta_t + beat_interval;
            console.log(delta_t);
            console.log(delta_t_prev);
-           if(Math.abs(delta_t) < 100|| Math.abs(delta_t_prev) < 100){
+           if(Math.abs(delta_t) < rhythm_judge_range  || Math.abs(delta_t_prev) < rhythm_judge_range){
              judge_obj.innerHTML = "Good♪";
              console.log("Gooooood");
              good_cnt++;
