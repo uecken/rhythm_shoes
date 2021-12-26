@@ -151,7 +151,7 @@ self.onSongleAPIReady =
             break;
         }
       });
-      player = global_player;
+      global_player = player;
   }
   
   
@@ -215,7 +215,7 @@ self.onSongleAPIReady =
   function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset+"ms";
-    player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+    global_player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
   }
 
   function rhythm_judge_range_offset(offset){
