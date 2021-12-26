@@ -3,7 +3,7 @@
 BleKeyboard bleKeyboard;
 
 #define SAMPLE_SIZE 4000
-#define SAMPLE_PERIOD 20
+#define SAMPLE_PERIOD 10
 float ax[SAMPLE_SIZE], ay[SAMPLE_SIZE], az[SAMPLE_SIZE];
 float ax_prev =0,ay_prev=0,az_prev=0;
 //float gx[SAMPLE_SIZE], gy[SAMPLE_SIZE], gz[SAMPLE_SIZE];
@@ -89,7 +89,7 @@ void loop() {
       if(eventDetector("pressure_sensor")){
         //感圧センサイベント処理を入れること
         //ACCZセンサー同様に複数回検知させないこと。
-        eventAction("print");
+        //eventAction("print");
       }
 
     
