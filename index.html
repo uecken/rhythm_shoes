@@ -262,7 +262,7 @@ self.onSongleAPIReady =
     audio_bad_range.textContent = audio_bad_volume.value;
   }, false);
   audio_music_volume.addEventListener("change", function(){
-    global_player.volume = audio_music_volume.value;
+    global_player.volume = audio_music_volume.value*100;
     audio_music_range.textContent = audio_music_volume.value;
   }, false);
 
