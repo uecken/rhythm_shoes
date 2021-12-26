@@ -112,7 +112,9 @@
       </div>
       <br>
       <div id="acc">加速度イベント(OFF)</div><br>
-       <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
+      <div id="beat_interval">beat_interval</div><br>
+
+      <!--<button onclick="eventAction()"> Smartphone-tap </button>-->
         <script src="https://api.songle.jp/v2/api.js"></script>
       </body>
 </html>
@@ -344,7 +346,8 @@ function set_beat_interval(url){
     beats_json = response['beats'];
     console.log('==========');
     beat_interval = (60.0/calc_ave(beats_json,'bpm',20))*1000;
-    console.log(beat_interval );
+    console.log(beat_interval);
+    beat_interval_obj.innerHTML = beat_interval;
   });
 }
 
