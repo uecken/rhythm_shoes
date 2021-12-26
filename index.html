@@ -136,8 +136,14 @@ self.onSongleAPIReady =
       });
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
- 　 player.addPlugin(new Songle.Plugin.Chorus());
-    player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw"}));　
+    player.addPlugin(new Songle.Plugin.SongleWidget({ //SW再生ボタンのみ
+    	element: "#songle-sw",
+      showOriginalSiteLink: false,
+      showMusicMap: false,
+      showSongleJpSiteLink: false
+    }));
+    //player.addPlugin(new Songle.Plugin.Chorus()); //SW通常埋め込み
+    //player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw"}));　//SW通常埋め込み　
     player.useMedia("https://youtu.be/PqJNc9KVIZE");
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");
