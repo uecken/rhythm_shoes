@@ -50,21 +50,38 @@
       <div>各種設定
         <div id="acc">acc</div>
         <div>
-          <span >beat_offset(未実装)</span>
+          <span >beat_offset(未実装):</span>
           <span id="beat_offset">-100</span>
           <br>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
         </div>
         <div>
-          <span >Rhythm range</span>
+          <span >Rhythm range:</span>
           <span id="rhythm_judge_range">100</span>
           <br>
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
         <div>
       </div>
+      <div>
+        <p>Sound Volume</p>
+        <p>Good：
+          <input type="range" id="volume_good" min="0" max="1" step="0.1" value="0.5">
+          <span id="vol_good_range">0.5</span>
+        </p>
+        <p>Baod 音量：
+          <input type="range" id="volume_bad" min="0" max="1" step="0.1" value="0.5">
+          <span id="vol_bad_range">0.5</span>
+        </p>
 
+      <button class="btn btn-success active" onclick="sound_onoff('audio_good')" data-toggle="button" aria-pressed="true">
+        Good Sound
+      </button>
+      <button class="btn btn-success active" onclick="sound_onoff('audio_bad')" data-toggle="button" aria-pressed="true">
+        Bad Sound
+      </button>
+      </div>
       <br>
       <div>開発状況
         <ul class="list-group">
@@ -133,13 +150,17 @@ self.onSongleAPIReady =
   
   var good_cnt=0;
   var bad_cnt =0;
-  var audio_good = new Audio ('sound/button_25.mp3');
-  var audio_bad = new Audio ('sound/button_34.mp3');
   var judge_obj = document.getElementById("judge");
   var timing_diff_obj = document.getElementById("timing_diff");
   var good_result_obj = document.getElementById("good_result");
   var bad_result_obj = document.getElementById("bad_result");
   var rhythm_judge_range = 100;
+  var audio_good = new Audio ('sound/button_25.mp3');
+  var audio_bad = new Audio ('sound/button_34.mp3');
+  var audio_good_play = true;
+  var audio_good_play = true;
+  
+
   function eventAction(rhythm_judge_range){
            var event_time = Date.now();
            console.log(event_time);
@@ -192,6 +213,38 @@ self.onSongleAPIReady =
   function rhythm_judge_range_offset(offset){
     rhythm_judge_range = Math.abs(rhythm_judge_range + offset);
     rhythm_judge_range_obj.innerHTML = "±"+rhythm_judge_range+"ms";
+  }
+
+  // ボリューム設定
+  let audio_good_volume = document.getElementById("volume_good");
+  let audio_good_range = document.getElementById("vol_good_range");
+  let audio_bad_volume = document.getElementById("volume_bad");
+  let audio_bad_range = document.getElementById("vol_bad_range");
+
+  audio_good.volume = audio_good_volume.value;  // 初期値設定
+  audio_ba.volume = audio_bad_volume.value;  // 初期値設定
+
+  // ボリューム変更時
+  audio_good_volume.addEventListener("change", function(){
+    audio_good.volume = audio_good_volume.value;
+    audio_good_range.textContent = audio_good_volume.value;
+  }, false);
+  audio_bad_volume.addEventListener("change", function(){
+    audio_bad.volume = audio_bad_volume.value;
+    audio_bad_range.textContent = audio_bad_volume.value;
+  }, false);
+
+
+
+
+  function sound_onoff(audio_obj){
+    if(audio_obj = 'audio_good'){
+      if(audio_good_play)audio_good_play = false;
+      else audio_good_play = true;
+    }else if(audio_obj = 'audio_bad'){
+      if(audio_bad_play)audio_bad_play = false;
+      else audio_bad_play = true;
+    }
   }
     //===========Smartphone Event Listener============    
     /*document.body.addEventListener('touchstart', function(){
