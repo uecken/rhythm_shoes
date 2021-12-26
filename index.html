@@ -61,7 +61,7 @@
       </div>
       <div class="media">
             <div id="songle" style="width:400px; height:250px;"></div>
-            <div id="sw"></div>
+            <div id="songle-sw"></div>
       </div>
       <br>
       <div><h3>各種設定</h3>
@@ -127,7 +127,7 @@ beat_offset_obj = document.getElementById("beat_offset");
 rhythm_judge_range_obj = document.getElementById("rhythm_judge_range");
 var global_player;
 
-//======beat offsetするには、playerインスタンスを外で生成する必要がある==========
+//======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
     var player =
@@ -136,7 +136,8 @@ self.onSongleAPIReady =
       });
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
-    player.volume = 100;
+ 　 player.addPlugin(new Songle.Plugin.Chorus());
+    player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw"}));　
     player.useMedia("https://youtu.be/PqJNc9KVIZE");
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");
@@ -167,13 +168,9 @@ self.onSongleAPIReady =
         }
       });
       global_player = player;
-
-      //===SongleWidget===
-      const plugin = new Songle.Plugin.SongleWidget({ element: "#sw" });
-      player.addPlugin(plugin);
   }
-  
-  
+
+
   var good_cnt=0;
   var bad_cnt =0;
   var judge_obj = document.getElementById("judge");
@@ -220,6 +217,7 @@ self.onSongleAPIReady =
     return null;
   }
 
+  //=========Event Listener===========
   document.body.addEventListener('keydown',
     event => {
         if (event.key === 'v' && event.ctrlKey || event.key === 'e' ) {
@@ -231,6 +229,8 @@ self.onSongleAPIReady =
       eventAction(rhythm_judge_range);
     });
 
+
+  //=========Offset Setting===========
   function beat_timing_offset(offset){
     beat_offset = beat_offset + offset;
     beat_offset_obj.innerHTML = beat_offset+"ms";
@@ -242,7 +242,7 @@ self.onSongleAPIReady =
     rhythm_judge_range_obj.innerHTML = "±"+rhythm_judge_range+"ms";
   }
 
-  // ボリューム設定
+  //=========Volume Setting===========
   let audio_good_volume = document.getElementById("volume_good");
   let audio_good_range = document.getElementById("vol_good_range");
   let audio_bad_volume = document.getElementById("volume_bad");
