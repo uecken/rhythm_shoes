@@ -16,7 +16,7 @@
       <p>リズムに合わせ画面をタップしてリズムゲームをしよう♪</p>
       <div>
         <span class="badge bg-primary">
-          beat
+          Beat
           <span id="beat" class="badge bg-secondary">1</span> 
         </span>
         <div id="judge">jundge</div>
@@ -30,18 +30,16 @@
           Good
           <span id="good_result" class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger">
             0
-            <span class="visually-hidden">unread messages</span>
           </span>
         </button>
         <button type="button" class="btn  btn-secondary  position-relative">
           Bad
           <span id="bad_result" class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger">
             0
-            <span class="visually-hidden">unread messages</span>
           </span>
         </button>
         <span class="badge bg-primary">
-          timing <span id="timing_diff" class="badge bg-success">0</span>
+          Timing <span id="timing_diff" class="badge bg-success">0</span>
         </span>
 
 
@@ -51,13 +49,18 @@
       </div>
       <div>各種設定
         <div id="acc">acc</div>
-        <div id="beat_offset">beat_offset(未実装)</div>
-        <div id="rhythm_judge_range">rhythm judgea range</div>
-        <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
-        <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
-        <br>
-        <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
-        <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
+        
+        <div id="rhythm_judge_range">rhythm judge range</div>
+        <div>
+          <span id="beat_offset">beat_offset(未実装)</span>
+          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> beat offset+ </button>
+          <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> beat offset- </button>
+        </div>
+        <div>
+          <span id="rhythm_judge_range">rhythm range</span>
+          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">rhythm_range+</button>
+          <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">rhythm_range-</button>
+        <div>
       </div>
 
       <br>
@@ -184,8 +187,8 @@ self.onSongleAPIReady =
   }
 
   function rhythm_judge_range_offset(offset){
-    rhythm_judge_range = rhythm_judge_range + offset;
-    rhythm_judge_range_obj.innerHTML = rhythm_judge_range+"ms";
+    rhythm_judge_range = Math.abs(rhythm_judge_range + offset);
+    rhythm_judge_range_obj.innerHTML = "±"+rhythm_judge_range+"ms";
   }
     //===========Smartphone Event Listener============    
     /*document.body.addEventListener('touchstart', function(){
