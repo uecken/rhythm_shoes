@@ -141,11 +141,12 @@ self.onSongleAPIReady =
 
     //★楽曲ごとにbeat_offsetも指定する.
     //その前に、beat_intervalを算出する事
-    var Music = {};
-    Music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
-    Music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0};
-    Music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
+    var music = {};
+    music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
+    music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0};
+    music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
 
+    target_music = music["Senbon-Zakura"];
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
     /*player.addPlugin(new Songle.Plugin.SongleWidget({ //SW再生ボタンのみ
@@ -161,6 +162,7 @@ self.onSongleAPIReady =
     //player.useMedia("https://youtu.be/PqJNc9KVIZE");//Tell Your World
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
     //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");// 千本桜
+    beat_interval = get_beat_interval(target_music['URL']);
 
     player.on("beatPlay",
       function(ev) {
@@ -301,6 +303,30 @@ self.onSongleAPIReady =
 function sound_onoff(aa){
   global_player.volume = 0;
 }
+
+function get_beat_interval(url){
+  var request = new XMLHttpRequest();
+  var URL = "https://widget.songle.jp/api/v1/song/chord.json?url="+url;
+  var beat_interval_ave;
+  request.open('GET',URL,true);
+  request.onload = function(){
+    var beats = JSON.parse(this.response();
+    console.log(beats);
+    beat_interval_ave = calc_ave(beats['bpm'])/60.0;
+    console.log(calc_ave(beats['bpm']));
+    console.log( beat_interval_ave);
+  }
+  return beat_interval_ave;
+}
+
+function calc_ave(data){
+  var sum = 0; // 平均
+  for(var i = 0; i < data.length; i++){
+    sum = sum + data[i];
+  }
+  ave = sum / data.length;
+  return ave;
+  }
 
 /*
   function sound_onoff(audio_obj){
