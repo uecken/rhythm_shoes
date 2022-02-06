@@ -158,6 +158,17 @@ function calc_ave(data){
 }
 
 
+//その前に、beat_intervalを算出する事
+var music = {};
+music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
+music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0}; //https://nico.ms/sm17570087
+music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
+music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
+//Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
+music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-100};
+target_music = music["Primary"];
+beat_offset =  target_music['beat_offset'];
+
 //======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
@@ -167,16 +178,7 @@ self.onSongleAPIReady =
       });
 
     //★楽曲ごとにbeat_offsetも指定する.
-    //その前に、beat_intervalを算出する事
-    var music = {};
-    music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
-    music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0}; //https://nico.ms/sm17570087
-    music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
-    music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
-    //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
-    music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-100};
-    target_music = music["Primary"];
-    beat_offset =  target_music['beat_offset'];
+
 
 
     player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
