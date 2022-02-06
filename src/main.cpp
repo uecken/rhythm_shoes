@@ -105,7 +105,7 @@ void loop() {
         //ACCZセンサー同様に複数回検知させないこと。
         //eventAction("print");
         eventAction("press");
-        delay(200);
+        delay(400);
         eventClear();
       }
 
