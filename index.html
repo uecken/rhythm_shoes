@@ -101,10 +101,6 @@
         </button>
       -->
       </div>
-      <div class="controller">
-        <button id="on">スクロール禁止</button>
-        <button id="off">スクロール禁止解除</button>
-      </div>
       <br>
 
       <div>開発状況
@@ -334,10 +330,12 @@ self.onSongleAPIReady =
   // ボリューム変更時
   audio_good_volume.addEventListener("change", function(){
     audio_good.volume = audio_good_volume.value;
+    audios_good.volume = audio_good_volume.value;    
     audio_good_range.textContent = audio_good_volume.value;
   }, false);
   audio_bad_volume.addEventListener("change", function(){
     audio_bad.volume = audio_bad_volume.value;
+    audios_bad.volume = audio_bad_volume.value;
     audio_bad_range.textContent = audio_bad_volume.value;
   }, false);
   audio_music_volume.addEventListener("change", function(){
