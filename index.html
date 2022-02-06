@@ -222,8 +222,13 @@ self.onSongleAPIReady =
   }
 
   function songle_reload(){
-    var player = global_player;
-    player =
+    //var player = global_player;
+    songle_obj = document.getElementById(songle-sw);
+    while( songle_obj.firstChild ){
+      songle_obj.removeChild( songle_obj.firstChild );
+    }
+
+    var player =
       new window.Songle.Player({
       mediaElement: "#songle"
     });
@@ -449,7 +454,7 @@ function calc_ave(data,key,margin_i,){
 
   window.onload = function() {
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
-
+    /*
     //https://qumeru.com/magazine/277
     // スクロールを禁止にする関数
     function disableScroll(event) {
@@ -469,5 +474,6 @@ function calc_ave(data,key,margin_i,){
       document.removeEventListener('touchmove', disableScroll, { passive: false });
       document.removeEventListener('mousewheel', disableScroll, { passive: false });
     }
+    */
   }
   </script>
