@@ -179,7 +179,8 @@ self.onSongleAPIReady =
     beat_offset =  music["Primary"]['beat_offset'];
 
 
-  　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+    player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+  　//player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
     /*player.addPlugin(new Songle.Plugin.SongleWidget({ //SW再生ボタンのみ
     	element: "#songle-sw",
       showOriginalSiteLink: false,
@@ -219,7 +220,7 @@ self.onSongleAPIReady =
             beat_obj.innerHTML = "4"; 
             break;
         }
-      },{offset: beat_offset});
+      });
       global_player = player;
   }
 
