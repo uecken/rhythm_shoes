@@ -77,6 +77,9 @@
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> + </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> - </button>
         </div>
+        <div id="reload_btn">reload</div>
+        </div>
+
       </div>
       <br>
       <div>
@@ -166,13 +169,15 @@ music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_o
 music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
 music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
 //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
-music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-250}; //PC -150, Pixel3aXL 0
+music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-250}; //PC -150, Pixel3aXL -230
 target_music = music["Primary"];
 beat_offset =  target_music['beat_offset'];
 
 //*****各音源毎且つデバイス毎にBeat/Chord/Melody/Chorusのタイミング(Offset)をデバイス毎に適切に調整する必要がある***/
 //*****特にデバイス毎にBeat-offset、Chord/Melody/Chorus-Offsetの二種類を調整する必要があると思われる***/a
-//*****理由としてPixel3a XLが出す音のタイミングがPC比較で100ms程遅いのではと思われるため。
+//*****理由としてPixel3a XLが出す音のタイミングがPC比較で80ms程遅いのではと思われるため。
+//*****offset設定後にSongle Playerを再読み込みするか、getでhtmlのoffsetに埋め込みSongle Playerからoffset読み込みする必要がある
+
 
 //======Songle Player生成==========
 self.onSongleAPIReady =
@@ -182,25 +187,10 @@ self.onSongleAPIReady =
         mediaElement: "#songle"
       });
 
-    //★楽曲ごとにbeat_offsetも指定する.
-
-
-
     player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
-  　//player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
-    /*player.addPlugin(new Songle.Plugin.SongleWidget({ //SW再生ボタンのみ
-    	element: "#songle-sw",
-      showOriginalSiteLink: false,
-      showMusicMap: false,
-      showSongleJpSiteLink: false
-    }));*/
     player.addPlugin(new Songle.Plugin.Chorus()); //SW通常埋め込み
     player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw", beatEventPriority: 4}));　//SW通常埋め込み　
-    player.useMedia(target_music['URL']); //千本桜 beat422
-    //player.useMedia("https://www.youtube.com/watch?v=GivkxpAVVC4"); //ファッションモンスター
-    //player.useMedia("https://youtu.be/PqJNc9KVIZE");//Tell Your World
-    //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
-    //player.useMedia("www.nicovideo.jp%2Fwatch%2Fsm17762184");// 千本桜
+    player.useMedia(target_music['URL']); 
     set_beat_interval(target_music['URL']);
 
     player.on("beatPlay",
@@ -231,6 +221,48 @@ self.onSongleAPIReady =
       global_player = player;
   }
 
+  function songle_reload(){
+    var player = global_player;
+    player =
+      new window.Songle.Player({
+      mediaElement: "#songle"
+    });
+
+    player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
+    player.addPlugin(new Songle.Plugin.Chorus()); //SW通常埋め込み
+    player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw", beatEventPriority: 4}));　//SW通常埋め込み　
+    player.useMedia(target_music['URL']);
+    set_beat_interval(target_music['URL']);
+
+    player.on("beatPlay",
+      function(ev) {
+        beat_time = Date.now();
+        switch(ev.data.beat.position) {
+          case 1:
+            console.log("1st beat !!");
+            beat_obj.innerHTML = "1";            
+            break;
+
+          case 2:
+            console.log("2nd beat !!");
+            beat_obj.innerHTML = "2";            
+            break;
+
+          case 3:
+            console.log("3rd beat !!")
+            beat_obj.innerHTML = "3";            
+            break;
+
+          case 4:
+            console.log("4th beat !!");
+            beat_obj.innerHTML = "4"; 
+            break;
+        }
+      });
+      global_player = player;
+  }
+
+  document.getElementById("button").onclick = songle_reload();
 
   var good_cnt=0;
   var bad_cnt =0;
