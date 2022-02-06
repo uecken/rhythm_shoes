@@ -72,7 +72,7 @@
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(-10)" id="rhythm_range+">-</button>
         <div>
         <div>
-          <span >beat_offset(未実装):</span>
+          <span >beat_offset:</span>
           <span id="beat_offset">0ms</span>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> + </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> - </button>
@@ -113,6 +113,7 @@
          <li class="list-group-item">マウスクリックやタップは離した際にイベント検出される</li>
          <li class="list-group-item">Timingは最も近い節(beat)との差を算出している。</li>
          <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する(未実装)。曲ごとに適切なBeat Offsetが異なる可能性がある。機種依存がどれ程あるかは要検証。まず初めにbeat_intervalを算出する事</li>
+         <li class="list-group-item">2/7 Beat Offset設定後にreloadする事で機種依存の遅延を調整可能とした。</li>
         </ul>
       </div>
       <br>
