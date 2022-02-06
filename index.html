@@ -233,8 +233,9 @@ self.onSongleAPIReady =
   var good_result_obj = document.getElementById("good_result");
   var bad_result_obj = document.getElementById("bad_result");
   var rhythm_judge_range = 100;
-  var audio_good = new Audio ('sound/button_25.mp3');
-  var audio_bad = new Audio ('sound/button_34.mp3');
+  const audio_good = new Audio ('sound/button_25.mp3');
+  const audios_good = [...new Array(10)].map(() => audio_good.cloneNode());
+  const audio_bad = new Audio ('sound/button_34.mp3');
   var audio_good_play = true;
   var audio_good_play = true;
   
@@ -260,7 +261,9 @@ self.onSongleAPIReady =
               judge_obj.innerHTML = "Good♪";
               good_result_obj.innerHTML = good_cnt;
               audio_good.currentTime = 0;
-              audio_good.play();
+              //audio_good.play();
+              const a = audios.find(a => a.paused);
+              if (a) { a.play(); }
              }
           }else{
              judge_obj.innerHTML = "bad...";
