@@ -101,7 +101,12 @@
         </button>
       -->
       </div>
+      <div class="controller">
+        <button id="on">スクロール禁止</button>
+        <button id="off">スクロール禁止解除</button>
+      </div>
       <br>
+
       <div>開発状況
         <ul class="list-group">
          <li class="list-group-item">更新日:2022/2/7 2:30</li>
@@ -414,6 +419,7 @@ function calc_ave(data,key,margin_i,){
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
   }
 
+  //https://qumeru.com/magazine/277
   window.onload = function() {
   // スクロールを禁止にする関数
   function disableScroll(event) {
