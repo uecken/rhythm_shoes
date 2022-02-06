@@ -77,7 +77,7 @@
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> + </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> - </button>
         </div>
-        <button type="button" class="btn btn-outline-primary" onclick="songle_reload" id="reload_btn"> reload </button>
+        <button type="button" class="btn btn-outline-primary" onclick="songle_reload()" id="reload_btn"> reload </button>
         </div>
 
       </div>
@@ -261,8 +261,6 @@ self.onSongleAPIReady =
       });
       global_player = player;
   }
-
-  document.getElementById("reload_btn").onclick = songle_reload();
 
   var good_cnt=0;
   var bad_cnt =0;
