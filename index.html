@@ -157,10 +157,6 @@ function calc_ave(data){
   return ave;
 }
 
-window.onload = function(){
-  beat_offset_obj.innerHTML = String(beat_offset) + "ms";
-}
-
 
 //======Songle Player生成==========
 self.onSongleAPIReady =
@@ -411,4 +407,7 @@ function calc_ave(data,key,margin_i,){
     });
     */
 
+  window.onload = function(){
+    beat_offset_obj.innerHTML = String(beat_offset) + "ms";
+  }
   </script>
