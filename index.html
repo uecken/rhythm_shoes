@@ -415,12 +415,10 @@ function calc_ave(data,key,margin_i,){
     });
     */
 
-  window.onload = function(){
-    beat_offset_obj.innerHTML = String(beat_offset) + "ms";
-  }
-
-  //https://qumeru.com/magazine/277
   window.onload = function() {
+    beat_offset_obj.innerHTML = String(beat_offset) + "ms";
+
+    //https://qumeru.com/magazine/277
     // スクロールを禁止にする関数
     function disableScroll(event) {
       event.preventDefault();
