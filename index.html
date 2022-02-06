@@ -179,6 +179,7 @@ beat_offset =  target_music['beat_offset'];
 //*****offset設定後にSongle Playerを再読み込みするか、getでhtmlのoffsetに埋め込みSongle Playerからoffset読み込みする必要がある
 
 
+/*
 //======Songle Player生成==========
 self.onSongleAPIReady =
   function(Songle) {
@@ -220,6 +221,7 @@ self.onSongleAPIReady =
       });
       global_player = player;
   }
+*/
 
   function songle_reload(){
     //var player = global_player;
@@ -460,6 +462,7 @@ function calc_ave(data,key,margin_i,){
 
   window.onload = function() {
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
+    songle_reload();
     /*
     //https://qumeru.com/magazine/277
     // スクロールを禁止にする関数
