@@ -172,10 +172,11 @@ self.onSongleAPIReady =
     //その前に、beat_intervalを算出する事
     var music = {};
     music["Fashion-Monster"] = {URL:"https://www.youtube.com/watch?v=GivkxpAVVC4",beat_offset:-200};//仮
-    music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0};
+    music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_offset:0}; //https://nico.ms/sm17570087
     music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
+    music["UTUTU"] = {URL:"https://nico.ms/sm2447410",beat_offset:0};
 
-    target_music = music["Senbon-Zakura"];
+    target_music = music["UTUTU"];
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
     /*player.addPlugin(new Songle.Plugin.SongleWidget({ //SW再生ボタンのみ
@@ -186,7 +187,7 @@ self.onSongleAPIReady =
     }));*/
     player.addPlugin(new Songle.Plugin.Chorus()); //SW通常埋め込み
     player.addPlugin(new Songle.Plugin.SongleWidget({ element: "#songle-sw", beatEventPriority: 4}));　//SW通常埋め込み　
-    player.useMedia("https://nico.ms/sm17570087"); //千本桜 beat422
+    player.useMedia(target_music['URL']); //千本桜 beat422
     //player.useMedia("https://www.youtube.com/watch?v=GivkxpAVVC4"); //ファッションモンスター
     //player.useMedia("https://youtu.be/PqJNc9KVIZE");//Tell Your World
     //player.useMedia("https://www.youtube.com/watch?v=zweVJrnE1uY");
