@@ -413,4 +413,26 @@ function calc_ave(data,key,margin_i,){
   window.onload = function(){
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
   }
+
+  window.onload = function() {
+  // スクロールを禁止にする関数
+  function disableScroll(event) {
+    event.preventDefault();
+  }
+
+  // スクロール禁止
+  document.getElementById('on').onclick = function() {
+    // イベントと関数を紐付け
+    document.addEventListener('touchmove', disableScroll, { passive: false });
+    document.addEventListener('mousewheel', disableScroll, { passive: false });
+  }
+/*
+  // スクロール解除
+  document.getElementById('off').onclick = function() {
+    // イベントと関数を紐付け
+    document.removeEventListener('touchmove', disableScroll, { passive: false });
+    document.removeEventListener('mousewheel', disableScroll, { passive: false });
+  }
+*/
+  }
   </script>
