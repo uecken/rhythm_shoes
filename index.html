@@ -236,6 +236,7 @@ self.onSongleAPIReady =
   const audio_good = new Audio ('sound/button_25.mp3');
   const audios_good = [...new Array(10)].map(() => audio_good.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
   const audio_bad = new Audio ('sound/button_34.mp3');
+  const audios_bad = [...new Array(10)].map(() => audio_bad.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
   var audio_good_play = true;
   var audio_good_play = true;
   
@@ -272,7 +273,9 @@ self.onSongleAPIReady =
              continuous_good_cnt = 0;
              bad_result_obj.innerHTML = bad_cnt;
              audio_bad.currentTime = 0;
-             audio_bad.play();
+             //audio_bad.play();
+             const b = audios_bad.find(a => a.paused);
+             if (b) { b.play(); }
            }
 
            //=====判定誤差表示====
