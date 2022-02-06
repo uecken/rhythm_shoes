@@ -223,10 +223,16 @@ self.onSongleAPIReady =
 
   function songle_reload(){
     //var player = global_player;
-    songle_obj = document.getElementById("songle-sw");
+    songle_sw_obj = document.getElementById("songle-sw");
+    while( songle_obj.firstChild ){
+      songle_sw_obj.removeChild( songle_sw_obj.firstChild );
+    }
+
+    songle_obj = document.getElementById("songle");
     while( songle_obj.firstChild ){
       songle_obj.removeChild( songle_obj.firstChild );
     }
+
 
     var player =
       new window.Songle.Player({
