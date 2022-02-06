@@ -125,7 +125,7 @@
 var beat_time = 0;
 var beat_interval = 0;//422
 //var beat_offset = -100;
-var beat_offset = 0;
+var beat_offset;
 beat_obj = document.getElementById("beat");
 beat_offset_obj = document.getElementById("beat_offset");
 beat_interval_obj = document.getElementById("beat_interval");
@@ -178,8 +178,9 @@ self.onSongleAPIReady =
     music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
     music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
     //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
-    music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:0};
-    target_music = music["Primary"];    
+    music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:100};
+    target_music = music["Primary"];
+    beat_offset =  music["Primary"]['beat_offset'];
 
 
   　player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
@@ -222,7 +223,7 @@ self.onSongleAPIReady =
             beat_obj.innerHTML = "4"; 
             break;
         }
-      });
+      },{offset: beat_offset});
       global_player = player;
   }
 
