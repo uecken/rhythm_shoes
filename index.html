@@ -179,12 +179,12 @@ music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
 music["CrazyCrazy"] = {URL:"https://youtu.be/JV3eoboDv2g",beat_offset:-100};
 music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-150}; //PC -150, Pixel3aXL -230
 
+//Generate HTML of Music List 
 var music_list_html =[];
-    //for (var i=0; i<music.length; i++){
-  for(key in music){
-    music_list_html.push('<option value='+key+'>' +key+ '</option>');
-  }
-  document.getElementById('music_list').innerHTML = music_list_html.join('');
+for(key in music){
+  music_list_html.push('<option value='+key+'>' +key+ '</option>');
+}
+document.getElementById('music_list').innerHTML = music_list_html.join('');
 //*****各音源毎且つデバイス毎にBeat/Chord/Melody/Chorusのタイミング(Offset)をデバイス毎に適切に調整する必要がある***/
 //*****特にデバイス毎にBeat-offset、Chord/Melody/Chorus-Offsetの二種類を調整する必要があると思われる***/a
 //*****理由としてPixel3a XLが出す音のタイミングがPC比較で80ms程遅いのではと思われるため。
@@ -236,15 +236,13 @@ self.onSongleAPIReady =
 */
 
   function songle_reload(){
-
+    //Read Selected Music from pull down list
     selected_music = document.getElementById('music_list').value;
     console.log(selected_music);
-    target_music = music["UTUTU"];
     target_music = music[selected_music];
     beat_offset =  target_music['beat_offset'];
+    beat_offset_obj.innerHTML = String(beat_offset) + "ms";
 
-
-    //var player = global_player;
     songle_sw_obj = document.getElementById("songle-sw");
     while( songle_sw_obj.firstChild ){
       songle_sw_obj.removeChild( songle_sw_obj.firstChild );
