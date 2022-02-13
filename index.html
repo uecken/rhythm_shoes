@@ -186,8 +186,10 @@ for(key in music){
 }
 document.getElementById('music_list').innerHTML = music_list_html.join('');
 
-
+selected_music = document.getElementById('music_list').value;
+console.log(selected_music);
 target_music = music["UTUTU"];
+target_music = music[selected_music ];
 beat_offset =  target_music['beat_offset'];
 
 //*****各音源毎且つデバイス毎にBeat/Chord/Melody/Chorusのタイミング(Offset)をデバイス毎に適切に調整する必要がある***/
