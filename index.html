@@ -66,6 +66,12 @@
       <br>
       <div><h3>各種設定</h3>
         <div>
+          <span >Music:</span>
+          <select name='music_list' id='music_list'>
+            <option value="test">test</option>            
+          </select>
+        </div>
+        <div>
           <span >Rhythm range:</span>
           <span id="rhythm_judge_range">±100ms</span>
           <button type="button" class="btn btn-outline-success" onclick="rhythm_judge_range_offset(10)" id="rhythm_range+">+</button>
@@ -170,7 +176,15 @@ music["Senbon-Zakura"] = {URL:"https://www.nicovideo.jp/watch/sm17570087",beat_o
 music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
 music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
 //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
+music["CrazyCrazy"] = {URL:"https://youtu.be/JV3eoboDv2g",beat_offset:-100};
 music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-150}; //PC -150, Pixel3aXL -230
+
+var music_list_html =[];
+//for (var i=0; i<music.length; i++){
+for(key in music){
+  music_list_html.push('<option value='+key+'>' +key+ '</option>');
+}
+document.getElementById('music_list').innerHTML = music_list_html.join('');
 
 
 target_music = music["UTUTU"];
