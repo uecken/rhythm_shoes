@@ -113,7 +113,7 @@
          <li class="list-group-item">マウスクリックやタップは離した際にイベント検出される</li>
          <li class="list-group-item">Timingは最も近い節(beat)との差を算出している。</li>
          <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する(未実装)。曲ごとに適切なBeat Offsetが異なる可能性がある。機種依存がどれ程あるかは要検証。まず初めにbeat_intervalを算出する事</li>
-         <li class="list-group-item">2/7 Beat Offset設定後にreloadする事で機種依存の遅延を調整可能とした。</li>
+         <li class="list-group-item">2/7 Beat Offset設定後にreloadする事で機種依存の遅延を調整可能とした。ご自身が合っていると思うタイミングで入力した時にTiming -100msと表示される場合は入力タイミングに対しbeatが100ms早いです．そのため，beat_offsetを現在値+100msとする事でbeatを100ms遅延させて入力タイミングとbeatを調整して下さい．曲や機種，BTイヤホンにより最適なbeat_offsetは異なります．</li>
         </ul>
       </div>
       <br>
@@ -240,7 +240,7 @@ self.onSongleAPIReady =
     var player =
       new window.Songle.Player({
       mediaElement: "#songle",
-      volume: 10
+      volume: 2
     });
 
     player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
