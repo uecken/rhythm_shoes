@@ -73,7 +73,7 @@
         <div>
         <div>
           <span >beat_offset:</span>
-          <span id="beat_offset">0ms</span>
+          <span id="beat_delay">0ms</span>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(10)" id="beat_offset+"> + </button>
           <button type="button" class="btn btn-outline-primary" onclick="beat_timing_offset(-10)" id="beat_offset-"> - </button>
         </div>
@@ -113,7 +113,7 @@
          <li class="list-group-item">マウスクリックやタップは離した際にイベント検出される</li>
          <li class="list-group-item">Timingは最も近い節(beat)との差を算出している。</li>
          <li class="list-group-item">Beat Offsetにより機種依存の遅延を調整する(未実装)。曲ごとに適切なBeat Offsetが異なる可能性がある。機種依存がどれ程あるかは要検証。まず初めにbeat_intervalを算出する事</li>
-         <li class="list-group-item">2/7 Beat Offset設定後にreloadする事で機種依存の遅延を調整可能とした。ご自身が合っていると思うタイミングで入力した時にTiming -100msと表示される場合は入力タイミングに対しbeatが100ms早いです．そのため，beat_offsetを現在値+100msとする事でbeatを100ms遅延させて入力タイミングとbeatを調整して下さい．曲や機種，BTイヤホンにより最適なbeat_offsetは異なります．</li>
+         <li class="list-group-item">2/7 Beat Offset設定後にreloadする事で機種依存の遅延を調整可能とした。ご自身が合っていると思うタイミングで入力した時にTiming -100msと表示される場合は入力タイミングに対しbeatが100ms早いです．そのため，beat_delayを現在値+100msとする事でbeatを100ms遅延させて入力タイミングとbeatを調整して下さい．曲や機種，BTイヤホンにより最適なbeat_delayは異なります．</li>
         </ul>
       </div>
       <br>
@@ -171,7 +171,9 @@ music["TellYourWorld"] = {URL:"https://youtu.be/PqJNc9KVIZE",beat_offset:-100};
 music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
 //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
 music["Primary"] = {URL:"https://piapro.jp/t/noy8/20210918143409",beat_offset:-150}; //PC -150, Pixel3aXL -230
-target_music = music["Primary"];
+
+
+target_music = music["UTUTU"];
 beat_offset =  target_music['beat_offset'];
 
 //*****各音源毎且つデバイス毎にBeat/Chord/Melody/Chorusのタイミング(Offset)をデバイス毎に適切に調整する必要がある***/
