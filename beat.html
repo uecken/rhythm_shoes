@@ -5,23 +5,31 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </head>
 <body>
-    <button type="button" onclick="repeat_beat()" id="playbeat" class="btn btn-primary">repeat_beat</button>
-    <input type="range" id="beat_range" value="60" min="1" max="300" onchange="update_bpm(this.value);">
-    <input type="text" id="beat_val" value="60">
+    <div>
+        <button type="button" onclick="repeat_beat()" id="playbeat" class="btn btn-primary">repeat_beat</button>
+        <span id="judge"></span>
+    </div>
+    <div>
+        <input type="range" id="beat_range" value="60" min="1" max="300" onchange="update_bpm(this.value);">
+        <input type="text" id="beat_val" value="60" style="width: 40px;">
+    </div>
+    <div>
+        <!-- 音量ボタン -->
+        <button id="volume-up" class="btn btn-success"><i class="fas fa-caret-up"></i></button><!-- #volume-up -->
+        <button id="volume-down" class="btn btn-success"><i class="fas fa-caret-down"></i></button><!-- #volume-down -->
+        <!-- ミュートボタン -->
+        <button id="mute" class="btn btn-warning"><i class="fas fa-volume-up"></i></button><!-- .btn btn-warning -->
 
-    <!-- 音量ボタン -->
-    <button id="volume-up" class="btn btn-success"><i class="fas fa-caret-up"></i></button><!-- #volume-up -->
-    <button id="volume-down" class="btn btn-success"><i class="fas fa-caret-down"></i></button><!-- #volume-down -->
-    <!-- ミュートボタン -->
-    <button id="mute" class="btn btn-warning"><i class="fas fa-volume-up"></i></button><!-- .btn btn-warning -->
-    <span id="judge"></span>
+    </div>
 </body>
 </html>
 
 <script>
-    const music = new Audio('sound/button01a.mp3')
-    const music_bad = new Audio('sound/button04a.mp3')
 
+    //=========Basic Play Sound ===========
+    const music = new Audio('sound/button01a.mp3')
+
+    const music_bad = new Audio('sound/button04a.mp3')
     function playbeat(){
         music.play()
     }
@@ -32,12 +40,7 @@
         music.stop()
     }
 
-    function update_bpm(val) {
-          document.getElementById('beat_val').value=val
-          beat_interval_ms = second_per_minutes/parseFloat(val)*1000
-          console.log("beat_interval"+beat_interval_ms)
-        }
-
+    //=========Repeat Beat===========
     bpm = 60
     second_per_minutes = 60 //60seconds per minutes
     beat_interval_ms = (second_per_minutes/bpm)*1000
@@ -54,6 +57,15 @@
                 playbeat_bad()
             }
     }
+    function update_bpm(val) {
+          document.getElementById('beat_val').value=val
+          beat_interval_ms = second_per_minutes/parseFloat(val)*1000
+          console.log("beat_interval"+beat_interval_ms)
+        }
+
+        
+    //=========Evenet Listener===========
+
 
     judge_obj = document.getElementById("judge");
     rhythm_judge_range = 100
@@ -64,7 +76,7 @@
         delta_t_prev = delta_t + beat_interval_ms;
         if(Math.abs(delta_t) < rhythm_judge_range  || Math.abs(delta_t_prev) < rhythm_judge_range){
             console.log("Gooooood");
-            judge_obj.innerHTML = "Good";
+            judge_obj.innerHTML = "Good♪";
             judge = true
         }else{
             judge_obj.innerHTML = "bad...";
@@ -83,26 +95,34 @@
         return null;
     }
 
+    
+    //=========Sound Volume Listener===========
+    music.volume = 0.3
+    music_bad.volume = 0.3
     const volumeUp = document.getElementById('volume-up');
     const volumeDown = document.getElementById('volume-down');
     const mute = document.getElementById('mute');
     // 音量ボタン
     volumeUp.addEventListener('click', function(){
-        if(music.volume < 1){
-            music.volume = (music.volume * 10 + 2) / 10;
+        if(music.volume <= 1){
+            music.volume = (music.volume * 10 + 1) / 10;
         }
-        if(music_bad.volume < 1){
-            music_bad.volume = (music_bad.volume * 10 + 2) / 10;
+        if(music_bad.volume <= 1){
+            music_bad.volume = (music_bad.volume * 10 + 1) / 10;
         }
     });
     volumeDown.addEventListener('click', function(){
-        if(music.volume < 1){
-            music.volume = (music.volume * 10 - 2) / 10;
+        console.log(music.volume)
+        const volume = music.volume;
+        const volume_bad = music_bad.volume;
+        if(music.volume <= 1){
+            music.volume = (volume * 10 - 1) / 10.0;
         }
-        if(music_bad.volume < 1){
-            music_bad.volume = (music_bad.volume * 10 - 2) / 10;
+        if(music_bad.volume <= 1){
+            music_bad.volume = (volume_bad * 10 - 1) / 10.0;
         }
     });
+
     // ミュートボタン
     mute.addEventListener('click', function(){
         if(music.muted || music_bad.muted){
@@ -115,7 +135,6 @@
             mute.innerHTML = '<i class="fas fa-volume-mute">';
         }
     });
-
 
   //=========Event Listener===========
   document.body.addEventListener('keydown',
