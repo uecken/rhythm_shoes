@@ -244,13 +244,14 @@ self.onSongleAPIReady =
     beat_offset =  target_music['beat_offset'];
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
 
-
+    console.log('aaa');
+    
     if(typeof global_player != 'undefined'){
-      //global_player.pause()
-
-        global_player.pause();
-        global_player.stop();
-        console.log('stop');
+      document.getElementById('songle-sw').firstElementChild.firstElementChild.firstElementChild.firstElementChild.click();
+        //global_player.pause();
+        //global_player.stop();
+      console.log('stop');
+      //global_player.stop()
         //global_player = '';
     }
 
@@ -302,7 +303,7 @@ self.onSongleAPIReady =
             break;
         }
       });
-      global_player = player;
+      //global_player = player;
   }
 
   var good_cnt=0;
