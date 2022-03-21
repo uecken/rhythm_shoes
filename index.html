@@ -61,8 +61,8 @@
       </div>
       <div class="media">
             <div id="songle"></div>
+            <div id="songle-sw"></div>
       </div>
-      <div id="songle-sw"></div>
       <br>
       <div><h3>各種設定</h3>
         <div>
@@ -95,12 +95,12 @@
           <span id="vol_good_range">0.8</span>
         </p>
         <p>  Bad  ：
-          <input type="range" id="volume_bad" min="0" max="1" step="0.1" value="0.8">
-          <span id="vol_bad_range">0.8</span>
+          <input type="range" id="volume_bad" min="0" max="1" step="0.1" value="0.0">
+          <span id="vol_bad_range">0.0</span>
         </p>
         <p>  Music：
-          <input type="range" id="volume_music" min="0" max="1" step="0.1" value="0.1">
-          <span id="vol_music_range">0.1</span>
+          <input type="range" id="volume_music" min="0" max="1" step="0.1" value="0.2">
+          <span id="vol_music_range">0.2</span>
         </p>
         <!--<button class="btn btn-success active" onclick="sound_onoff('audio_good')" data-toggle="button" aria-pressed="true">
           Good Sound
@@ -168,8 +168,7 @@ function calc_ave(data){
   return ave;
 }
 
-
-//その前に、beat_intervalを算出する事
+//-----Setting Music List -----
 var music = {};
 music["UTUTU"] = {URL:"https://www.nicovideo.jp/watch/sm2447410",beat_offset:0};
 //Cannot read music music["10000Hours"] = {URL:"https://soundcloud.com/bangtan/10000hourswitharmy?utm_source=clipboard&utm_campaign=wtshare&utm_medium=widget&utm_content=https%253A%252F%252Fsoundcloud.com%252Fbangtan%252F10000hourswitharmy",beat_offset:0};
@@ -259,7 +258,7 @@ self.onSongleAPIReady =
     var player =
       new window.Songle.Player({
       mediaElement: "#songle",
-      volume: 1
+      volume: 0.2
     });
 
     player.addPlugin(new Songle.Plugin.Beat({offset: beat_offset}));
@@ -304,10 +303,10 @@ self.onSongleAPIReady =
   var good_result_obj = document.getElementById("good_result");
   var bad_result_obj = document.getElementById("bad_result");
   var rhythm_judge_range = 100;
-  const audio_good = new Audio ('sound/button_25.mp3');
-  const audios_good = [...new Array(10)].map(() => audio_good.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
+  const audio_good = new Audio ('sound/button01a.mp3');//sound/button_25.mp3
+  //const audios_good = [...new Array(10)].map(() => audio_good.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
   const audio_bad = new Audio ('sound/button_34.mp3');
-  const audios_bad = [...new Array(10)].map(() => audio_bad.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
+  //const audios_bad = [...new Array(10)].map(() => audio_bad.cloneNode());//https://marmooo.blogspot.com/2021/06/javascript.html
   var audio_good_play = true;
   var audio_good_play = true;
   
@@ -333,9 +332,9 @@ self.onSongleAPIReady =
               judge_obj.innerHTML = "Good♪";
               good_result_obj.innerHTML = good_cnt;
               audio_good.currentTime = 0;
-              //audio_good.play();
-              const a = audios_good.find(a => a.paused);
-              if (a) { a.play(); }
+              audio_good.play();
+              //const a = audios_good.find(a => a.paused);
+              //if (a) { a.play(); }
              }
           }else{
              judge_obj.innerHTML = "bad...";
@@ -344,9 +343,9 @@ self.onSongleAPIReady =
              continuous_good_cnt = 0;
              bad_result_obj.innerHTML = bad_cnt;
              audio_bad.currentTime = 0;
-             //audio_bad.play();
-             const b = audios_bad.find(b => b.paused);
-             if (b) { b.play(); }
+             audio_bad.play();
+             //const b = audios_bad.find(b => b.paused);
+             //if (b) { b.play(); }
            }
 
            //=====判定誤差表示====
@@ -398,12 +397,12 @@ self.onSongleAPIReady =
   // ボリューム変更時
   audio_good_volume.addEventListener("change", function(){
     audio_good.volume = audio_good_volume.value;
-    audios_good.volume = audio_good_volume.value;    
+    //audios_good.volume = audio_good_volume.value;    
     audio_good_range.textContent = audio_good_volume.value;
   }, false);
   audio_bad_volume.addEventListener("change", function(){
     audio_bad.volume = audio_bad_volume.value;
-    audios_bad.volume = audio_bad_volume.value;
+    //audios_bad.volume = audio_bad_volume.value;
     audio_bad_range.textContent = audio_bad_volume.value;
   }, false);
   audio_music_volume.addEventListener("change", function(){
@@ -411,9 +410,11 @@ self.onSongleAPIReady =
     audio_music_range.textContent = audio_music_volume.value;
   }, false);
 
+  /*
 function sound_onoff(aa){
   global_player.volume = 0;
 }
+*/
 
 
 function set_beat_interval(url){
@@ -445,7 +446,6 @@ function calc_ave(data,key,margin_i,){
 
 
 
-/*
   function sound_onoff(audio_obj){
     if(audio_obj = 'audio_good'){
       if(audio_good_play)audio_good_play = false;
@@ -455,7 +455,7 @@ function calc_ave(data,key,margin_i,){
       else audio_bad_play = true;
     }
   }
-  */
+
     //===========Smartphone Event Listener============    
     /*document.body.addEventListener('touchstart', function(){
       eventAction();

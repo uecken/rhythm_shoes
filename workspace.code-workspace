@@ -8,5 +8,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Rhythm_shoes",
+		"liveServer.settings.port": 5501
+	}
 }
