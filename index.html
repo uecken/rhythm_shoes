@@ -430,10 +430,10 @@ function sound_onoff(aa){
 
 function set_beat_interval(url){
   console.log('URL');
-  var URL = "https://widget.songle.jp/api/v1/song/beat.json?url="+url;
+  var URL = "https://widget.songle.jp/api/v1/song/beat.json?url="+url; 
   console.log(url);
   var beats_json;
-  fetch(URL)
+  fetch(URL) //CORS alert happens when reload 2 times.
   .then((res)=>{
     console.log(res);
     return( res.json() );
