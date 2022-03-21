@@ -244,6 +244,11 @@ self.onSongleAPIReady =
     beat_offset =  target_music['beat_offset'];
     beat_offset_obj.innerHTML = String(beat_offset) + "ms";
 
+
+    if(typeof global_player != 'undefined'){
+      global_player.stop()
+    }
+
     songle_sw_obj = document.getElementById("songle-sw");
     while( songle_sw_obj.firstChild ){
       songle_sw_obj.removeChild( songle_sw_obj.firstChild );
@@ -253,6 +258,7 @@ self.onSongleAPIReady =
     while( songle_obj.firstChild ){
       songle_obj.removeChild( songle_obj.firstChild );
     }
+
 
     var player =
       new window.Songle.Player({
@@ -292,6 +298,7 @@ self.onSongleAPIReady =
         }
       });
       global_player = player;
+
   }
 
   var good_cnt=0;
