@@ -247,13 +247,11 @@ self.onSongleAPIReady =
 
     if(typeof global_player != 'undefined'){
       //global_player.pause()
-      global_player.on("beatplay",
-      function() {
-        //global_player.pause();
+
+        global_player.pause();
         global_player.stop();
         console.log('stop');
-        global_player = '';
-      });
+        //global_player = '';
     }
 
     songle_sw_obj = document.getElementById("songle-sw");
